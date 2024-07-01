@@ -10,8 +10,10 @@ export async function getProductDetail(id: string) {
 }
 
 export async function getProducts() {
+  console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-products`, {
+    // `http://localhost:3000/api/get-products`, {
       cache: "no-store",
     }
   );

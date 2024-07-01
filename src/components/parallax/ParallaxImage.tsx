@@ -1,19 +1,24 @@
-import React from "react";
+import Island from "@components/island/Island";
 
-const ParallaxImage = () => {
+const ParallaxImage = ({ image, phrase, secondary }: ParallaxImageProps) => {
   return (
-    <h1 className="text-3xl font-bold underline bg-red-500 ">
-      <div
-        className="image-bg"
-        style={{
-          backgroundImage: `url(https://www.apple.com/newsroom/images/2023/09/apple-unveils-iphone-15-pro-and-iphone-15-pro-max/tile/Apple-iPhone-15-Pro-lineup-hero-230912.jpg.landing-big_2x.jpg)`,
-        }}
-      >
-        <div className="photoText">
-          <h1 className="text-8xl">Elegance.</h1>
+    <>
+      <h1 className="text-3xl font-bold underline bg-black">
+        <div
+          className={`relative bg-fixed bg-center bg-no-repeat bg-cover w-full ${
+            secondary ? "h-[100vh]" : "h-screen"
+          }`}
+          style={{
+            backgroundImage: `url(${image})`,
+          }}
+        >
+          <div className="text-white absolute top-1/2 text-base w-full text-center">
+            <h1 className="text-8xl select-none">{phrase}</h1>
+          </div>
         </div>
-      </div>
-    </h1>
+      </h1>
+      <Island />
+    </>
   );
 };
 
