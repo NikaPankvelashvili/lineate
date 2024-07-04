@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import cn from "classnames";
 
 const ProductCard = ({
+  id,
   title,
   price,
   photos,
@@ -12,19 +15,16 @@ const ProductCard = ({
   description,
 }: Product) => {
   const [hovered, setHovered] = useState(false);
+  const router = useRouter();
 
   return (
-    <div
+    <button
+      onClick={() => router.push(`/products/${id}`)}
       className="flex flex-col w-4/5 max-w-80 border border-gray-200  m-4 rounded-lg items-center min-h-[400px] justify-around cursor-pointer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div className="relative">
-        {/* {!hovered ? (
-          <Image src={photos[0].url} alt={title} width={300} height={300} />
-        ) : (
-          <Image src={photos[1].url} alt={title} width={300} height={300} />
-        )} */}
         <Image
           className={`${
             hovered ? "opacity-0" : "opacity-100"
@@ -60,16 +60,28 @@ const ProductCard = ({
             Buy Now
           </Link>
           <div className="flex gap-2">
-            {colors.map((color, index) => (
-              <div
-                key={index}
-                className={`p-3 rounded-full bg-[${color}] border border-gray-400`}
-              ></div>
-            ))}
+            <>
+              {colors.map((color, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`p-3 rounded-full border border-gray-400`}
+                    // className={cn([
+                    //   "p-3",
+                    //   "rounded-full",
+                    //   "border",
+                    //   "border-gray-400",
+                    //   color_local,
+                    // ])}
+                    style={{ backgroundColor: color }}
+                  ></div>
+                );
+              })}
+            </>
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

@@ -27,5 +27,8 @@ interface Product {
   photos: ProductImage[];
   colors: string[];
   memories: string[];
-  RAM: string[];
+  ram: string[];
+  type: ProductType;
 }
+
+type ProductType = "iphone" | "macbook" | "ipad" | "watch";
