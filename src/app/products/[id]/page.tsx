@@ -1,5 +1,7 @@
 import ProductDetailedPhotos from "@/src/components/product/ProductDetailedPhotos";
+import { Product } from "@/src/types/products";
 import { getProductDetail } from "@src/app/api";
+import Image from "next/image";
 
 const ProductsDetailedPage = async ({
   params: { id },
@@ -18,33 +20,18 @@ const ProductsDetailedPage = async ({
   }: Product = await getProductDetail(id);
 
   return (
-    <div>
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <p>Price: {price}</p>
-      <p>Stock: {stock}</p>
-      <ul>
-        <ProductDetailedPhotos photos={photos} colors={colors} />
-      </ul>
-      <h2>Available Colors:</h2>
-      <ul>
-        {colors.map((color, index) => (
-          <li key={index}>{color}</li>
-        ))}
-      </ul>
-      <h2>Available Memories:</h2>
-      <ul>
-        {memories?.map((memory, index) => (
-          <li key={index}>{memory}</li>
-        ))}
-      </ul>
-      <h2>Available RAM:</h2>
-      <ul>
-        {ram?.map((ram, index) => (
-          <li key={index}>{ram}</li>
-        ))}
-      </ul>
-    </div>
+    <main>
+      <div className="flex">
+        <div className="flex flex-col w-1/5">
+          <ProductDetailedPhotos photos={photos} colors={colors} />
+        </div>
+        <div>
+          <Image src={photos[0].url} alt={title} width={500} height={500} />
+        </div>
+        <div></div>
+      </div>
+      <div></div>
+    </main>
   );
 };
 

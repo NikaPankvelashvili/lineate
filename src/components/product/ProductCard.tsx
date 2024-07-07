@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import cn from "classnames";
+import { Product } from "@/src/types/products";
 
 const ProductCard = ({
   id,
@@ -20,7 +21,7 @@ const ProductCard = ({
   return (
     <button
       onClick={() => router.push(`/products/${id}`)}
-      className="flex flex-col w-4/5 max-w-80 border border-gray-200  m-4 rounded-lg items-center min-h-[400px] justify-around cursor-pointer"
+      className="flex flex-col w-4/5 max-w-80 text-white border-gray-200  m-4 rounded-lg items-center min-h-[400px] justify-around cursor-pointer bg-[#2b2b2c]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -73,7 +74,7 @@ const ProductCard = ({
                     //   "border-gray-400",
                     //   color_local,
                     // ])}
-                    style={{ backgroundColor: color }}
+                    style={{ backgroundColor: color.colorCode }}
                   ></div>
                 );
               })}

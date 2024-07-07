@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Island from "@components/island/Island";
+import { FeaturedProductProps } from "@/src/types/products";
 
 const FeaturedProduct = ({
   name,
@@ -25,7 +26,11 @@ const FeaturedProduct = ({
             <p className={`${reverse && "text-end"} w-4/5`}>{description}</p>
             <div className="flex gap-3">
               <Link
-                href={"/products"}
+                href={`${
+                  name === "All Products"
+                    ? "/products"
+                    : `/products?type=${name.toLocaleLowerCase()}`
+                }`}
                 className="bg-[#0071e3] rounded-full px-4 py-2 hover:bg-[#0056b3] ease-in-out duration-300"
               >
                 {`${
@@ -43,7 +48,7 @@ const FeaturedProduct = ({
           <div className="h-full w-[1px] border border-[#fff]"></div>
           <div className="flex justify-center items-center w-1/2 select-none ">
             <div className="w-full px-20">
-              <Image src={image} alt={image} width={1080} height={1080} />
+              <Image src={image} alt={`${image}`} width={1080} height={1080} />
             </div>
           </div>
         </div>

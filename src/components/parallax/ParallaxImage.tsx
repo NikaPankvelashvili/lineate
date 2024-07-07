@@ -1,3 +1,4 @@
+import { ParallaxImageProps } from "@/src/types/generalType";
 import Island from "@components/island/Island";
 
 const ParallaxImage = ({ image, phrase, secondary }: ParallaxImageProps) => {
