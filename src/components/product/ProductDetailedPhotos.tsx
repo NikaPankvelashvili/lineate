@@ -1,5 +1,6 @@
 "use client";
 
+import { Color, ProductImage } from "@/src/types/products";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -8,9 +9,11 @@ const ProductDetailedPhotos = ({
   colors,
 }: {
   photos: ProductImage[];
-  colors: string[];
+  colors: Color[];
 }) => {
-  const [selectedColor, setSelectedColor] = useState<string | null>(colors[0]);
+  const [selectedColor, setSelectedColor] = useState<string | null>(
+    colors[0].colorCode
+  );
 
   return (
     <ul>
@@ -30,11 +33,11 @@ const ProductDetailedPhotos = ({
         {colors.map((color, index) => (
           <button
             className={`p-4 rounded-full ${
-              selectedColor === color ? "border-2 border-black" : ""
+              selectedColor === color.colorCode ? "border-2 border-black" : ""
             }`}
             key={index}
-            onClick={() => setSelectedColor(color)}
-            style={{ backgroundColor: color }}
+            onClick={() => setSelectedColor(color.colorCode)}
+            style={{ backgroundColor: color.colorCode }}
           ></button>
         ))}
       </div>
