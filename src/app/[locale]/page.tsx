@@ -1,5 +1,5 @@
 import ParallaxImage from "@components/parallax/ParallaxImage";
-import { getProducts } from "./api";
+import { getProducts } from "../api";
 import FeaturedProduct from "@components/featuredProduct/FeaturedProduct";
 import MacImage from "@assets/macbook_pro.png";
 import IPhoneImage from "@assets/iphone.png";

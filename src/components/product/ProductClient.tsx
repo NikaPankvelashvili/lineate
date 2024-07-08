@@ -320,6 +320,7 @@ import ColorFilter from "./filter/ColorFilter";
 import RamFilter from "./filter/RamFilter";
 import MemoryFilter from "./filter/MemoryFilter";
 import PriceFilter from "./filter/PriceFilter";
+import { useI18n } from "@/src/locales/client";
 
 const ProductClient = ({ products }: { products: Product[] }) => {
   const [isClient, setIsClient] = useState<boolean>(false);
@@ -352,6 +353,8 @@ const ProductClient = ({ products }: { products: Product[] }) => {
     "priceSort",
     parseAsString.withDefault("default")
   );
+
+  const t = useI18n();
 
   useEffect(() => {
     setIsClient(true);
@@ -397,7 +400,7 @@ const ProductClient = ({ products }: { products: Product[] }) => {
               setMaxPrice(null);
             }}
           >
-            Clear Filters
+            {t("clearFilters")}
           </button>
         </div>
       </section>
@@ -406,25 +409,23 @@ const ProductClient = ({ products }: { products: Product[] }) => {
           <input
             type="text"
             className=" border-b-2  bg-[#161617] w-1/3 text-white text-lg focus:outline-none border-white"
-            placeholder="Search..."
+            placeholder={`${t("search")}...`}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <label className="text-white">
-            Price By:
+            {t("priceBy") + ":"}
             <select
-              className="bg-[#161617] text-white p-2 ml-2"
+              className="bg-[#161617] text-white p-2 ml-2 outline-none"
               onChange={(e) => {
                 e.target.value === "default"
                   ? setPriceSort(null)
                   : setPriceSort(e.target.value as PriceSort);
               }}
             >
-              <option selected value="default">
-                Default
-              </option>
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
+              <option value="default">{t("default")}</option>
+              <option value="asc">{t("ascending")}</option>
+              <option value="desc">{t("descending")}</option>
             </select>
           </label>
         </div>

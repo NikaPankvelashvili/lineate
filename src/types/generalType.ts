@@ -3,3 +3,5 @@ export interface ParallaxImageProps {
   phrase?: string,
   secondary?: boolean
 }
+
+export type LocaleType = "en" | "ka";

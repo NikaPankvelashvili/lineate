@@ -2,13 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import Island from "@components/island/Island";
 import { FeaturedProductProps } from "@/src/types/products";
+import { getI18n } from "@/src/locales/server";
 
-const FeaturedProduct = ({
+const FeaturedProduct = async ({
   name,
   description,
   image,
   reverse,
 }: FeaturedProductProps) => {
+  const t = await getI18n();
+
   return (
     <>
       <section className="flex justify-center  px-[8%] min-w-96">
@@ -34,14 +37,16 @@ const FeaturedProduct = ({
                 className="bg-[#0071e3] rounded-full px-4 py-2 hover:bg-[#0056b3] ease-in-out duration-300"
               >
                 {`${
-                  name !== "All Products" ? `Buy ${name}` : "View All Products"
+                  name !== "All Products"
+                    ? `${t("buy")} ${name}`
+                    : `${t("allProducts")}`
                 }`}
               </Link>
               <Link
                 href={"/products"}
                 className=" bg-transparent border border-[#0071e3] rounded-full px-4 py-2 hover:bg-[#0071e3] ease-in-out duration-300"
               >
-                Learn More
+                {t("learnMore")}
               </Link>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { handleTypeChange } from "../utils";
+import { useI18n } from "@/src/locales/client";
 
 const TypeFilter = ({
   selectedType,
@@ -8,9 +9,11 @@ const TypeFilter = ({
   selectedType: string[];
   setSelectedType: React.Dispatch<React.SetStateAction<string[] | null>>;
 }) => {
+  const t = useI18n();
+
   return (
     <fieldset className="flex flex-col text-white">
-      <legend>Choose Product Type</legend>
+      <legend>{t("typeFilter")}</legend>
       <label htmlFor="all">
         <input
           type="checkbox"

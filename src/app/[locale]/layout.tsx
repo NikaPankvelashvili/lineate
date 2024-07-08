@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@components/header/Header";
 import Footer from "@components/footer/Footer";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { I18nProviderClient } from "@/src/locales/client";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,14 +14,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  params: { locale },
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{ params: { locale: string }; children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${inter.className} `}>
-        <Header />
-        {children}
-        <Footer />
+        <I18nProviderClient locale={locale}>
+          <UserProvider>
+            <Header />
+            {children}
+            <Footer />
+          </UserProvider>
+        </I18nProviderClient>
       </body>
     </html>
   );
