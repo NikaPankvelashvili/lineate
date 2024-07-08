@@ -3,25 +3,26 @@ import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaRegUser } from "react-icons/fa";
 import Link from "next/link";
-// import { useUser } from "@auth0/nextjs-auth0/client";
-// import { useI18n } from "@/locales/client";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import Image from "next/image";
+import { useI18n } from "@/src/locales/client";
 
-function DropdownMenu() {
-  // const session = useUser();
-  // const user = session?.user;
-  // const isAdmin =
-  //   user && Array.isArray(user.role) && user.role.includes("admin");
+const DropdownMenu = ({ image_url }: any) => {
+  const session = useUser();
+  const user = session?.user;
+  const isAdmin =
+    user && Array.isArray(user.role) && user.role.includes("admin");
 
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  // const t = useI18n();
+  const t = useI18n();
 
   const toggleDropdown = () => {
-    // if (!user) {
-    //   window.location.href = "/api/auth/login";
-    // } else {
-    setIsOpen(!isOpen);
-    // }
+    if (!user) {
+      window.location.href = "/api/auth/login";
+    } else {
+      setIsOpen(!isOpen);
+    }
   };
   const handleItemClick = () => {
     setIsOpen(false);
@@ -51,7 +52,19 @@ function DropdownMenu() {
           className="text-opacity-65"
           onClick={toggleDropdown}
         >
-          <FaRegUser className="hover:text-white hover:cursor-pointer opacity-65 hover:opacity-100  dark:text-white" />
+          {user ? (
+            <div className="w-6 h-6">
+              <Image
+                className="hover:text-white hover:cursor-pointer opacity-65 hover:opacity-100 rounded-full dark:text-white"
+                src={image_url}
+                alt="profile picture"
+                width={32}
+                height={32}
+              />
+            </div>
+          ) : (
+            <FaRegUser className="hover:text-white hover:cursor-pointer opacity-65 hover:opacity-100  dark:text-white" />
+          )}
         </button>
       </div>
 
@@ -70,7 +83,7 @@ function DropdownMenu() {
                 href={"/profile"}
                 className="block w-full px-4 py-2 text-center text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-[#252527b1] dark:hover:text-white"
               >
-                Profile
+                {t("profile")}
               </Link>
 
               {/* {isAdmin && (
@@ -87,20 +100,20 @@ function DropdownMenu() {
                 href={"/profile/orders"}
                 className="block w-full px-4 py-2 text-center text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-[#252527b1] dark:hover:text-white"
               >
-                My Orders
+                {t("myOrders")}
               </Link>
               <Link
                 onClick={handleItemClick}
                 href={"/profile/reviews"}
                 className="block w-full px-4 py-2 text-center text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-[#252527b1] dark:hover:text-white"
               >
-                My Reviews
+                {t("myReviews")}
               </Link>
               <button
                 onClick={handleItemClick}
                 className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-[#252527b1] dark:hover:text-white"
               >
-                <a href={"/api/auth/logout"}>Log Out</a>
+                <a href={"/api/auth/logout"}>{t("logOut")}</a>
               </button>
             </div>
           </motion.div>
@@ -108,6 +121,6 @@ function DropdownMenu() {
       </AnimatePresence>
     </div>
   );
-}
+};
 
 export default DropdownMenu;

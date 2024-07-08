@@ -15,10 +15,15 @@ const ProductDetailedPhotos = ({
     colors[0].colorCode
   );
 
+  console.log(photos);
+  console.log(selectedColor);
+
   return (
     <ul>
       {photos
-        .filter((photo) => photo.color == selectedColor)
+        .filter((photo) => {
+          return photo.color == selectedColor;
+        })
         .map((photo, index) => (
           <li key={index}>
             <Image

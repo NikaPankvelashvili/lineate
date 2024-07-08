@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import cn from "classnames";
 import { Product } from "@/src/types/products";
+import { useI18n } from "@/src/locales/client";
 
 const ProductCard = ({
   id,
@@ -17,6 +18,7 @@ const ProductCard = ({
 }: Product) => {
   const [hovered, setHovered] = useState(false);
   const router = useRouter();
+  const t = useI18n();
 
   return (
     <button
@@ -58,7 +60,7 @@ const ProductCard = ({
             href={"/products"}
             className="bg-[#0071e3] rounded-full px-4 py-1 hover:bg-[#0056b3] ease-in-out duration-300 text-white "
           >
-            Buy Now
+            {t("buyNow")}
           </Link>
           <div className="flex gap-2">
             <>
@@ -67,13 +69,6 @@ const ProductCard = ({
                   <div
                     key={index}
                     className={`p-3 rounded-full border border-gray-400`}
-                    // className={cn([
-                    //   "p-3",
-                    //   "rounded-full",
-                    //   "border",
-                    //   "border-gray-400",
-                    //   color_local,
-                    // ])}
                     style={{ backgroundColor: color.colorCode }}
                   ></div>
                 );

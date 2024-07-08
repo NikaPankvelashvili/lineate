@@ -5,6 +5,7 @@ import {
   mapMemoryToString,
 } from "../utils";
 import cn from "classnames";
+import { useI18n } from "@/src/locales/client";
 
 const MemoryFilter = ({
   products,
@@ -15,9 +16,11 @@ const MemoryFilter = ({
   selectedMemory: number[];
   setSelectedMemory: React.Dispatch<React.SetStateAction<number[] | null>>;
 }) => {
+  const t = useI18n();
+
   return (
     <fieldset>
-      <legend className="text-white mb-2">Choose Memory</legend>
+      <legend className="text-white mb-2">{t("memoryFilter")}</legend>
       <div className="flex flex-wrap gap-2 flex-col">
         {products &&
           getUniqueMemories(products).map((memory, index) => {

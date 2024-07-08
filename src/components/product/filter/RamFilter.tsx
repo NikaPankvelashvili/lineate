@@ -1,3 +1,4 @@
+import { useI18n } from "@/src/locales/client";
 import { getUniqueRam, handleRamChange } from "../utils";
 import { Product } from "@/src/types/products";
 import cn from "classnames";
@@ -11,9 +12,11 @@ const RamFilter = ({
   selectedRam: number[];
   setSelectedRam: React.Dispatch<React.SetStateAction<number[] | null>>;
 }) => {
+  const t = useI18n();
+
   return (
     <fieldset className="">
-      <legend className="text-white mb-2">Choose RAM</legend>
+      <legend className="text-white mb-2">{t("ramFilter")}</legend>
       <div className="flex flex-wrap gap-2 flex-col">
         {products &&
           getUniqueRam(products).map((ram, index) => {

@@ -1,7 +1,7 @@
-import React from "react";
 import { getUniqueColors, handleColorChange } from "../utils";
 import { Product } from "@/src/types/products";
 import cn from "classnames";
+import { useI18n } from "@/src/locales/client";
 
 const ColorFilter = ({
   products,
@@ -12,9 +12,11 @@ const ColorFilter = ({
   selectedColors: String[];
   setSelectedColor: React.Dispatch<React.SetStateAction<string[] | null>>;
 }) => {
+  const t = useI18n();
+
   return (
     <fieldset className="flex flex-wrap gap-2 text-white w-4/5">
-      <legend className="mb-2">Choose Product Color</legend>
+      <legend className="mb-2">{t("colorFilter")}</legend>
       {products &&
         getUniqueColors(products).map((color, index) => {
           const included_color =
