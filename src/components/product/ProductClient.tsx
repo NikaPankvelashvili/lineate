@@ -314,7 +314,7 @@ import {
   handleRamChange,
   handleTypeChange,
   // handleTypeChange,
-} from "./utils";
+} from "./utils/products";
 import TypeFilter from "./filter/TypeFilter";
 import ColorFilter from "./filter/ColorFilter";
 import RamFilter from "./filter/RamFilter";

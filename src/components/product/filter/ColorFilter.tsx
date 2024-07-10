@@ -1,4 +1,4 @@
-import { getUniqueColors, handleColorChange } from "../utils";
+import { getUniqueColors, handleColorChange } from "../utils/products";
 import { Product } from "@/src/types/products";
 import cn from "classnames";
 import { useI18n } from "@/src/locales/client";

@@ -3,14 +3,18 @@ import Logo from "@assets/logo.png";
 import Image from "next/image";
 import CustomLink from "./CustomLink";
 import DropdownMenu from "@components/dropdowns/DropDown";
-import CartIcon from "@components/cart/CartIcon";
+import CartIcon from "@components/header/CartIcon";
 import { User } from "@/src/types/user";
-import { getUserInfo } from "@/src/app/api";
+import { getCart, getUserInfo } from "@/src/app/api";
 import LanguageDropDown from "../dropdowns/LanguageDropDown";
 import { getI18n } from "@/src/locales/server";
+import { getSession } from "@auth0/nextjs-auth0";
 
 const Header = async () => {
-  const user: User = await getUserInfo();
+  const user_server = await getSession();
+  const user: User = user_server != null ? await getUserInfo() : null;
+
+  const cart = await getCart();
 
   const t = await getI18n();
 

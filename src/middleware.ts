@@ -5,7 +5,7 @@ import { getSession } from "@auth0/nextjs-auth0/edge";
 function isPathProtected(pathName: string) {
   const protectedRoutes = [
     "/profile",
-    "/cart",
+    // "/cart",
     "/checkout",
     "/admin"
   ];

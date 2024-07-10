@@ -42,5 +42,5 @@ export default{
   'default': 'Default',
   'ascending': 'Ascending',
   'descending': 'Descending',
-  
+
 } as const

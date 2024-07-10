@@ -1,8 +1,12 @@
 "use client";
 
+import { CartContext } from "@/src/providers/CartContext";
 import { Product, ProductImage } from "@/src/types/products";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import { CartContextType, CartProductType } from "@/src/types/cartTypes";
+import _ from "lodash";
+import { handleAddToCart, handleColorChange } from "./utils/productDetailed";
 
 const ProductDetailedClient = ({ product }: { product: Product }) => {
   const [selectedColor, setSelectedColor] = useState<string>(
@@ -12,16 +16,14 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
     product.photos.find((photo) => photo.color === selectedColor) ||
       product.photos[0]
   );
-  const [price, setPrice] = useState<number>(product.price);
+  const [selectedMemory, setSelectedMemory] = useState<number>(-1);
+  const [selectedRam, setSelectedRam] = useState<number>(-1);
 
-  function handleColorChange(e: React.MouseEvent<HTMLButtonElement>) {
-    if (selectedColor === e.currentTarget.value) return;
-    setSelectedColor(e.currentTarget.value);
-    setSelectedImage(
-      product.photos.find((photo) => photo.color === e.currentTarget.value) ||
-        product.photos[0]
-    );
-  }
+  const cartContext = useContext<CartContextType>(CartContext);
+
+  // useEffect(() => {
+  //   console.log(cartContext.products);
+  // }, [cartContext]);
 
   return (
     <main className="flex px-[7%] py-12 gap-12 bg-[#161617] min-h-screen justify-between">
@@ -56,19 +58,78 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
       <div className="w-1/2 ">
         <h1 className="text-3xl text-white font-bold mb-16">{product.title}</h1>
         <p className="text-white mb-8">{product.description}</p>
-        <p className="text-white">{`Starting at: ${product.price}$`}</p>
-        <button className="p-4 bg-black text-white">Add to Cart</button>
-        {product.colors.map((color, index) => (
-          <button
-            className={`p-4 rounded-full ${
-              selectedColor === color.colorCode ? "border-2 border-black" : ""
-            }`}
-            key={index}
-            value={color.colorCode}
-            onClick={(e) => handleColorChange(e)}
-            style={{ backgroundColor: color.colorCode }}
-          ></button>
-        ))}
+        <p className="text-white mb-4">{`Starting at: ${product.price}$`}</p>
+        <div className="flex gap-2 items-center mb-4">
+          {product.colors.map((color, index) => (
+            <button
+              className={`p-4 rounded-full ${
+                selectedColor === color.colorCode ? "border-2 border-black" : ""
+              }`}
+              key={index}
+              value={color.colorCode}
+              onClick={(e) =>
+                handleColorChange(
+                  e,
+                  product,
+                  selectedColor,
+                  setSelectedColor,
+                  setSelectedImage
+                )
+              }
+              style={{ backgroundColor: color.colorCode }}
+            ></button>
+          ))}
+        </div>
+        <div className="flex items-center gap-2 mb-4">
+          {product.memories.map((memory, index) => (
+            <button
+              className={`text-white p-5 bg-[#2b2b2c] rounded ${
+                selectedMemory === index ? "border-2 border-black" : ""
+              }`}
+              value={index}
+              key={index}
+              onClick={(e) =>
+                setSelectedMemory(parseInt(e.currentTarget.value))
+              }
+            >
+              {memory}
+            </button>
+          ))}
+        </div>
+        <div className="flex items-center gap-2">
+          {product.ram.map((ram, index) => (
+            <button
+              onClick={(e) => setSelectedRam(parseInt(e.currentTarget.value))}
+              value={index}
+              className={`text-white p-5 bg-[#2b2b2c] rounded ${
+                selectedRam === index ? "border-2 border-black" : ""
+              }`}
+              key={index}
+            >
+              {ram}
+            </button>
+          ))}
+        </div>
+        <span className="text-white text-2xl">{`Total: ${product.price}$`}</span>
+        <button
+          className="text-white"
+          onClick={() =>
+            handleAddToCart({
+              product,
+              color: product.colors.find(
+                (color) => color.colorCode === selectedColor
+              ) || { colorCode: "", colorName: "" },
+              memory: product.memories[selectedMemory],
+              ram: product.ram[selectedRam],
+              cartContext,
+              image_url:
+                product.photos.find((photo) => photo.color === selectedColor)
+                  ?.url || "",
+            })
+          }
+        >
+          Add to Cart
+        </button>
       </div>
     </main>
   );

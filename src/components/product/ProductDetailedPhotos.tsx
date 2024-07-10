@@ -15,9 +15,6 @@ const ProductDetailedPhotos = ({
     colors[0].colorCode
   );
 
-  console.log(photos);
-  console.log(selectedColor);
-
   return (
     <ul>
       {photos

@@ -17,6 +17,7 @@
     "classnames": "^2.5.1",
     "framer-motion": "^11.2.12",
     "loadash": "^1.0.0",
+    "lodash": "^4.17.21",
     "next": "14.2.4",
     "next-international": "^1.2.4",
     "nuqs": "^1.17.4",
@@ -27,6 +28,7 @@
     "use-location-state": "^3.1.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

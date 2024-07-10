@@ -5,6 +5,8 @@ import Header from "@components/header/Header";
 import Footer from "@components/footer/Footer";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { I18nProviderClient } from "@/src/locales/client";
+import { CartProvider } from "@/src/providers/CartContext";
+import CartProviderWrapper from "@/src/providers/CartProviderWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +24,11 @@ export default function RootLayout({
       <body className={`${inter.className} `}>
         <I18nProviderClient locale={locale}>
           <UserProvider>
-            <Header />
-            {children}
-            <Footer />
+            <CartProviderWrapper>
+              <Header />
+              {children}
+              <Footer />
+            </CartProviderWrapper>
           </UserProvider>
         </I18nProviderClient>
       </body>

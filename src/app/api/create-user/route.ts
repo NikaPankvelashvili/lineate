@@ -19,16 +19,16 @@ export async function GET(_: NextRequest) {
         `;
       }
 
-      // const users = await sql`SELECT id FROM users WHERE sub = ${sub} LIMIT 1;`;
-      // const userId = users.rows[0].id;
+      const users = await sql`SELECT id FROM users WHERE sub = ${sub} LIMIT 1;`;
+      const userId = users.rows[0].id;
 
-      // const cartCheck = await sql`SELECT * FROM carts WHERE user_id = ${userId}`;
-      // if (!cartCheck.rows.length) {
-      //   await sql`
-      //     INSERT INTO carts (user_id, products)
-      //     VALUES (${userId}, '{}');
-      //   `;
-      // }
+      const cartCheck = await sql`SELECT * FROM cart WHERE user_id = ${userId}`;
+      if (!cartCheck.rows.length) {
+        await sql`
+          INSERT INTO cart (user_id, products)
+          VALUES (${userId}, '[]');
+        `;
+      }
     } else {
       return redirect("/api/auth/logout");
     }
