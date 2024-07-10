@@ -1,5 +1,5 @@
 import { useI18n } from "@/src/locales/client";
-import { getUniqueRam, handleRamChange } from "../utils";
+import { getUniqueRam, handleRamChange } from "../utils/products";
 import { Product } from "@/src/types/products";
 import cn from "classnames";
 

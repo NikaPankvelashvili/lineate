@@ -1,5 +1,5 @@
 import React from "react";
-import { handleTypeChange } from "../utils";
+import { handleTypeChange } from "../utils/products";
 import { useI18n } from "@/src/locales/client";
 
 const TypeFilter = ({

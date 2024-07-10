@@ -113,7 +113,15 @@ const DropdownMenu = ({ image_url }: any) => {
                 onClick={handleItemClick}
                 className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-[#252527b1] dark:hover:text-white"
               >
-                <a href={"/api/auth/logout"}>{t("logOut")}</a>
+                <a
+                  className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-[#252527b1] dark:hover:text-white"
+                  href={"/api/auth/logout"}
+                  onClick={() => {
+                    localStorage.setItem("cart", "[]");
+                  }}
+                >
+                  {t("logOut")}
+                </a>
               </button>
             </div>
           </motion.div>

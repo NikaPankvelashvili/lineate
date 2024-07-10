@@ -118,3 +118,6 @@ export function handleMemoryChange(
 export function mapMemoryToString(memory: number): string {
   return memory % 1024 === 0 ? `${memory/1024}TB` : `${memory}GB`;
 }
+
+
+// Cart functions

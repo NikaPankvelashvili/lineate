@@ -3,7 +3,7 @@ import {
   getUniqueMemories,
   handleMemoryChange,
   mapMemoryToString,
-} from "../utils";
+} from "../utils/products";
 import cn from "classnames";
 import { useI18n } from "@/src/locales/client";
 

@@ -56,6 +56,10 @@ export async function getUserId() {
   const user = session?.user;
   const id = user?.sub;
  
+  if (!id) {
+    return null;
+  }
+
   const userSubId = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-id/${id}`,
     {
@@ -67,3 +71,32 @@ export async function getUserId() {
 
   return userId;
 }
+
+
+// Cart 
+
+export async function getCart(){
+  const id = await getUserId();
+
+  // console.log(id);
+
+  if (!id) {
+    return [];
+  }
+
+  const products = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  const data = await products.json();
+
+  const [cart] = data.cart.rows;
+
+  if (!cart) return [];
+
+  return cart.products;
+}
+
