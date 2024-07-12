@@ -78,8 +78,6 @@ export async function getUserId() {
 export async function getCart(){
   const id = await getUserId();
 
-  // console.log(id);
-
   if (!id) {
     return [];
   }
@@ -100,3 +98,12 @@ export async function getCart(){
   return cart.products;
 }
 
+
+// Orders
+export const getOrders = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/orders`, {
+    cache: "no-store",
+  });
+  const orders = await res.json();
+  return orders;
+};

@@ -86,7 +86,7 @@ const DropdownMenu = ({ image_url }: any) => {
                 {t("profile")}
               </Link>
 
-              {/* {isAdmin && (
+              {isAdmin && (
                 <Link
                   href="/admin"
                   onClick={handleItemClick}
@@ -94,7 +94,7 @@ const DropdownMenu = ({ image_url }: any) => {
                 >
                   {"admin"}
                 </Link>
-              )} */}
+              )}
               <Link
                 onClick={handleItemClick}
                 href={"/profile/orders"}
@@ -110,18 +110,15 @@ const DropdownMenu = ({ image_url }: any) => {
                 {t("myReviews")}
               </Link>
               <button
-                onClick={handleItemClick}
+                onClick={() => {
+                  handleItemClick();
+                  localStorage.setItem("cart", "[]");
+                  window.location.href = "/api/auth/logout";
+                }}
                 className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-[#252527b1] dark:hover:text-white"
               >
-                <a
-                  className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-[#252527b1] dark:hover:text-white"
-                  href={"/api/auth/logout"}
-                  onClick={() => {
-                    localStorage.setItem("cart", "[]");
-                  }}
-                >
-                  {t("logOut")}
-                </a>
+                {t("logOut")}
+                {/* </a> */}
               </button>
             </div>
           </motion.div>

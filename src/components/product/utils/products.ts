@@ -120,4 +120,67 @@ export function mapMemoryToString(memory: number): string {
 }
 
 
-// Cart functions
+// filters
+export function filterByType(products: Product[], selectedType: string[] | null): Product[] {
+  return selectedType ? products.filter((product) => selectedType.includes("all") || selectedType.includes(product.type)) : products;
+}
+
+ function filterByColor(products: Product[], selectedColors: string[] | null): Product[] {
+  return selectedColors ? products.filter((product) => selectedColors.includes("all") || product.colors.some((c) => selectedColors.includes(c.colorName))) : products;
+}
+
+ function filterByRam(products: Product[], selectedRam: number[] | null): Product[] {
+  return selectedRam ? products.filter((product) => selectedRam.includes(0) ? true : product.ram.some((ram) => selectedRam.includes(ram))) : products;
+}
+
+ function filterByMemory(products: Product[], selectedMemory: number[] | null): Product[] {
+  return selectedMemory ? products.filter((product) => selectedMemory.includes(0) ? true : product.memories.some((memory) => selectedMemory.includes(memory))) : products;
+}
+
+ function filterByPice(products: Product[], minPrice: number, maxPrice: number): Product[] {
+  return products.filter((product) => (minPrice === -1 || product.price >= minPrice) && (maxPrice === -1 || product.price <= maxPrice));
+}
+
+ function filterBySearchTerm(products: Product[], searchTerm: string): Product[] {
+  return products.filter((product) => product.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()));
+}
+
+// sorters
+
+ function sortProducts(products: Product[], priceSort: string): Product[] {
+  return products.sort((a, b) => priceSort === "asc" ? a.price - b.price : priceSort === "desc" ? b.price - a.price : 0);
+}
+
+
+export function handleChangedFilters(
+  products: Product[],
+  selectedType: string[] | null,
+  selectedColors: string[] | null,
+  selectedRam: number[] | null,
+  selectedMemory: number[] | null,
+  minPrice: number,
+  maxPrice: number,
+  priceSort: string,
+  searchTerm: string
+): Product[] {
+  return sortProducts(
+    filterByPice(
+      filterByMemory(
+        filterByRam(
+          filterByColor(
+            filterByType(
+              filterBySearchTerm(products, searchTerm),
+              selectedType
+            ),
+            selectedColors
+          ),
+          selectedRam
+        ),
+        selectedMemory
+      ),
+      minPrice,
+      maxPrice
+    ),
+    priceSort
+  );
+}
