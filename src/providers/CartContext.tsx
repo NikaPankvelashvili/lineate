@@ -53,7 +53,7 @@ export const CartProvider = ({
         return;
       }
 
-      // console.log("cartProducts", cartProducts);
+      console.log("cartProducts", cartProducts);
       await handleAddToCartDB(cartProducts);
     };
 

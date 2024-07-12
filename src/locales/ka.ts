@@ -33,6 +33,7 @@ export default{
   'from': 'დან',
   'to': 'მდე',
   'clearFilters': 'გასუფთავება',
+  'noProducts': 'პროდუქტები არ მოიძებნა',
 
   // Search
   'search': 'ძიება',

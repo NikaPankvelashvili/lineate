@@ -33,6 +33,7 @@ export default{
   'from': 'From',
   'to': 'To',
   'clearFilters': 'Clear Filters',
+  'noProducts': 'No Products Found',
 
   // Search
   'search': 'Search',
