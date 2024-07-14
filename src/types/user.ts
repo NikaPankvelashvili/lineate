@@ -7,4 +7,5 @@ export interface User {
   nickname: string;
   phone: string;
   address: string;
+  isadmin?: boolean;
   }

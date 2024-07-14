@@ -2,9 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 import { CartProductType } from "../types/cartTypes";
-import { getUserId } from "./api";
+import { createBlog, deleteBlogById, deleteProductById, EditProfile, getUserId, updateBlogById } from "./api";
 import { redirect } from "next/navigation";
 import { User } from "../types/user";
+import { AddBlogType, BlogType } from "../types/blogTypes";
 
 export const handleAddToCartDB = async (products: CartProductType[]) => {
   "use server";
@@ -56,3 +57,60 @@ export const checkout = async (filteredProducts: CartProductType[],
       }
     });
 };
+
+
+export async function editProfileInfo(formData: any) {
+  const { userSub, name, phone, address } = formData;
+
+  try {
+    await EditProfile(userSub, name, phone, address);
+    revalidatePath("/profile");
+  } catch (error) {
+    console.error("Error in editProfileInfo:", error);
+    throw error;
+  }
+}
+
+
+export const deleteProduct: (id: number) => Promise<void> = async (id: number) => {
+  await deleteProductById(id);
+  revalidatePath("/product")
+  revalidatePath("/admin")
+};
+
+
+export const deleteBlog: (id: number) => Promise<void> = async (id: number) => {
+  await deleteBlogById(id);
+  revalidatePath("/admin");
+  revalidatePath("/blog");
+};
+
+// export async function createAddBlogAction(blogData: AddBlogType) {
+//   const {title_en,title_ka,description_en,description_ka,image_url,approved,type, user_id} = blogData
+//    revalidatePath("/blog")
+//    revalidatePath("/admin")
+//    createBlog(title_en, title_ka ,description_en, description_ka,image_url, approved, type, user_id);
+// }
+
+export async function createAddBlogAction(blogData: AddBlogType) {
+  const { title, description, image_url, approved, type, user_id } = blogData;
+  console.log("blogData", blogData);
+  revalidatePath("/blog");
+  revalidatePath("/admin");
+  revalidatePath("/admin/blogs");
+  createBlog({title, description, image_url, approved, type, user_id});
+}
+
+// export async function updateBlog( blog: BlogType) {
+//   const {id, title,description,image_url } = blog;
+//   revalidatePath("/admin");
+//   revalidatePath("/blog");
+//   updateBlogById(id,title,description,image_url);
+// }
+
+export async function updateBlog(blog: BlogType) {
+  const { id, title, description, image_url } = blog;
+  revalidatePath("/admin");
+  revalidatePath("/blog");
+  await updateBlogById(id, title, description, image_url);
+}

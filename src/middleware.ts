@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createI18nMiddleware } from "next-international/middleware";
 import { getSession } from "@auth0/nextjs-auth0/edge";
+import { getUserInfo } from "./app/api";
 
 function isPathProtected(pathName: string) {
   const protectedRoutes = [

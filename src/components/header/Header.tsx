@@ -35,7 +35,10 @@ const Header = async () => {
         <div className="flex items-center gap-4">
           <LanguageDropDown />
           <CartIcon />
-          <DropdownMenu image_url={`${user ? user.image_url : ""}`} />
+          <DropdownMenu
+            // image_url={`${user ? user.image_url : ""}`}
+            userProp={user}
+          />
         </div>
       </div>
     </header>
