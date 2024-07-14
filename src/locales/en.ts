@@ -7,6 +7,7 @@ export default{
   'myOrders': 'My Orders',
   'myReviews': 'My Reviews',
   'logOut': 'Log Out',
+  'admin': 'Admin',
 
   // Footer 
   'home': 'Home',
@@ -43,5 +44,44 @@ export default{
   'default': 'Default',
   'ascending': 'Ascending',
   'descending': 'Descending',
+
+
+  // Admin
+  'orders': 'Orders',
+  'users': 'Users',
+  'blogs': 'Blogs',
+  'addBlog': 'Add Blog',
+  'title': 'Title',
+  'description': 'Description',
+  'image': 'Image',
+  'upload': 'Upload',
+  'titleEn': 'Title (EN)',
+  'titleKa': 'Title (KA)',
+  'descriptionEn': 'Description (EN)',
+  'descriptionKa': 'Description (KA)',
+  'currentImage': 'Current Image',
+  'previewImage': 'Preview Image',
+  'edit': 'Edit',
+
+
+  // Formik
+  'Namerequired': 'Name is required',
+  'phoneIsRequired': 'Phone is required',
+  'addressIsRequired': 'Address is required',
+  'blogValidation': 'Blog Validation',
+  'tooShort': 'Too short',
+  'titleRequired': 'Title is required',
+  'descriptionRequired': 'Description is required',
+  'imageRequired': 'Image is required',
+  'tooLong': 'Too long',
+  'type': 'Type',
+
+  // Profile Update
+  'email': 'Email',
+  'name': 'Name',
+  'phone': 'Phone',
+  'address': 'Address',
+  'yourInfoIsUpdated': 'Your information is updated',
+  'update': 'Update',
 
 } as const

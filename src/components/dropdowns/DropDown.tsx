@@ -6,12 +6,19 @@ import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
 import { useI18n } from "@/src/locales/client";
+import { User } from "@/src/types/user";
 
-const DropdownMenu = ({ image_url }: any) => {
+const DropdownMenu = ({
+  userProp,
+}: // image_url,
+{
+  userProp: User;
+  // image_url: string;
+}) => {
   const session = useUser();
   const user = session?.user;
-  const isAdmin =
-    user && Array.isArray(user.role) && user.role.includes("admin");
+
+  // const userFromDB: User = await getUserInfo();
 
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -52,11 +59,11 @@ const DropdownMenu = ({ image_url }: any) => {
           className="text-opacity-65"
           onClick={toggleDropdown}
         >
-          {user ? (
+          {userProp ? (
             <div className="w-6 h-6">
               <Image
                 className="hover:text-white hover:cursor-pointer opacity-65 hover:opacity-100 rounded-full dark:text-white"
-                src={image_url}
+                src={userProp.image_url ? userProp.image_url : ""}
                 alt="profile picture"
                 width={32}
                 height={32}
@@ -86,13 +93,13 @@ const DropdownMenu = ({ image_url }: any) => {
                 {t("profile")}
               </Link>
 
-              {isAdmin && (
+              {userProp?.isadmin && (
                 <Link
                   href="/admin"
                   onClick={handleItemClick}
                   className="block w-full px-4 py-2 text-center text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
-                  {"admin"}
+                  {t("admin")}
                 </Link>
               )}
               <Link
