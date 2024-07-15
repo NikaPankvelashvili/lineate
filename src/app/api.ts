@@ -165,7 +165,7 @@ export async function EditProfile(userSub: string, name: string, phone: string, 
   console.log(userSub, name, phone, address);
 
   try {
-    const response = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/edit-profileInfo", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-profileInfo`, {
       method: "POST",
       cache: "no-store",
       headers: {
@@ -236,7 +236,7 @@ export async function deleteBlogById(id: number) {
 // }
 
 export async function createBlog({ title, description, image_url, type, user_id, approved }: AddBlogType) {
-  return await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/add-blog", {
+  return await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/add-blog`, {
     method: "POST",
     cache: "no-store",
     headers: {
