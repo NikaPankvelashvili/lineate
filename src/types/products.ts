@@ -34,3 +34,16 @@ export interface Color{
 
 export type ProductType = "iphone" | "macbook" | "ipad" | "watch";
 export type PriceSort = "asc" | "desc" | "default";
+
+
+export interface AddProductType {
+  title: string;
+  description: string;
+  price: number;
+  stock: number;
+  type: ProductType;
+  colors: Color[];
+  memories: number[];
+  ram: number[];
+  photos: ProductImage[];
+}

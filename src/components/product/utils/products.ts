@@ -22,7 +22,7 @@ export function getUniqueRam(products: Product[]): number[] {
   const ramSet: Set<number> = new Set();
 
   products.forEach((product) => {
-    product.ram.forEach((ram) => {
+    product.ram?.forEach((ram) => {
       ramSet.add(ram);
     });
   });

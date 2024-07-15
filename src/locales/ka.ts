@@ -61,7 +61,12 @@ export default{
   'currentImage': 'მიმდინარე სურათი',
   'previewImage': 'ახალი სურათი',
   'edit': 'რედაქტირება',
-
+  'addNewProduct': 'დაამატე ახალი პროდუქტი',
+  'uploading': 'იტვირთება',
+  'delete': 'წაშლა',
+  'category': 'კატეგორია',
+  'stock': 'რაოდენობა',
+  'addProduct': 'დაამატე პროდუქტი',
 
 
   // Formik
@@ -75,6 +80,11 @@ export default{
   'imageRequired': 'სურათი აუცილებელია',
   'tooLong': 'ძალიან გრძელია',
   'type': 'ტიპი',
+  'priceNumber': 'ფასი უნდა იყოს ციფრი',
+  'priceRequired': 'ფასი აუცილებელია',
+  'categoryRequired': 'კატეგორია აუცილებელია',
+  'stockNumber': 'რაოდენობა უნდა იყოს ციფრი',
+  'stockRequired': 'რაოდენობა აუცილებელია',
 
   // Profile Update
   'email': 'ელ. ფოსტა',
@@ -83,5 +93,26 @@ export default{
   'address': 'მისამართი',
   'yourInfoIsUpdated': 'ინფორმაცია განახლდა წარმატებით',
   'update': 'განახლება',
+
+  // Add Product
+  'invalidType': 'არასწორი ტიპი',
+  'typeRequired': 'ტიპი აუცილებელია',
+  'memoryNumber': 'მეხსიერება უნდა იყოს ციფრი',
+  'memoryRequired': 'მეხსიერება აუცილებელია',
+  'ramNumber': 'Ram უნდა იყოს რიცხვი',
+  'ramRequired': 'Ram აუცილებელია',
+  'color': 'ფერი',
+  'first': 'პირველიად დაყენება',
+  'colors': 'ფერები',
+  'colorName': 'ფერის სახელი',
+  'colorCode': 'ფერის კოდი',
+  'addColor': 'დაამატე ფერი',
+  'remove': 'წაშლა',
+  'memories': 'მეხსიერებები',
+  'memory': 'მეხსიერება',
+  'addMemory': 'დაამატე მეხსიერება',
+  'ram': 'Ram',
+  'addRam': 'დაამატე Ram',
+
 
 } as const

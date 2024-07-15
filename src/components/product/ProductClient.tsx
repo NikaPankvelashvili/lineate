@@ -145,7 +145,7 @@ const ProductClient = ({ products }: { products: Product[] }) => {
               .filter((product) => {
                 return selectedRam.includes(0)
                   ? true
-                  : product.ram.some((ram) => selectedRam.includes(ram));
+                  : product.ram?.some((ram) => selectedRam.includes(ram));
               })
               .filter((product) => {
                 return product.title
