@@ -7,35 +7,37 @@ import { parseAsString, useQueryState } from "nuqs";
 import { useContext, useEffect, useState } from "react";
 
 const OrdersClient = () => {
-  const user = useUser();
+  const { user, isLoading } = useUser(); // Changed to destructure isLoading
   const [status, setStatus] = useQueryState("status", parseAsString);
   const cartContext: CartContextType = useContext(CartContext);
   const [productsCleared, setProductsCleared] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    if (!user.isLoading) {
+    if (!isLoading) {
       setIsClient(true);
     }
-  }, [user.isLoading]);
+  }, [isLoading]); // Changed user.isLoading to isLoading
 
   useEffect(() => {
     if (!isClient) return;
     const dealWithOrderStatus = (status: string | null) => {
-      if (user.isLoading || !status || productsCleared) return;
+      if (isLoading || !status || productsCleared) return; // Changed user.isLoading to isLoading
       if (status === "success" && !productsCleared) {
+        console.log("Order status success, clearing products"); // Added logging
         cartContext.setProducts([]);
         setProductsCleared(true); // Mark products as cleared to prevent re-renders
         // SUCCESSFULLY CLEARED ALERT
         setStatus(null); // If needed, reset status after clearing products
       } else if (status === "failed") {
+        console.log("Order status failed"); // Added logging
         // FAILED ALERT
         // setStatus(null); // If needed, reset status after failed alert
       }
     };
 
     dealWithOrderStatus(status);
-  }, [status, user.isLoading, productsCleared, cartContext]);
+  }, [status, isLoading, productsCleared, cartContext, isClient]); // Changed user.isLoading to isLoading
 
   return null;
 };

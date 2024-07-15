@@ -62,6 +62,12 @@ export default{
   'currentImage': 'Current Image',
   'previewImage': 'Preview Image',
   'edit': 'Edit',
+  'addNewProduct': 'Add New Product',
+  'uploading': 'Uploading',
+  'delete': 'Delete',
+  'category': 'Category',
+  'stock': 'Stock',
+  'addProduct': 'Add Product',
 
 
   // Formik
@@ -75,6 +81,11 @@ export default{
   'imageRequired': 'Image is required',
   'tooLong': 'Too long',
   'type': 'Type',
+  'priceNumber': 'Price must be a number',
+  'priceRequired': 'Price is required',
+  'categoryRequired': 'Category is required',
+  'stockNumber': 'Stock must be a number',
+  'stockRequired': 'Stock is required',
 
   // Profile Update
   'email': 'Email',
@@ -83,5 +94,26 @@ export default{
   'address': 'Address',
   'yourInfoIsUpdated': 'Your information is updated',
   'update': 'Update',
+
+  // Add Product
+  'invalidType': 'Invalid Type',
+  'typeRequired': 'Type is required',
+  'memoryNumber': 'Memory must be a number',
+  'memoryRequired': 'Memory is required',
+  'ramNumber': 'Ram must be a number',
+  'ramRequired': 'Ram is required',
+  'color': 'Color',
+  'first': 'Set As Frist',
+  'colors': 'Colors',
+  'colorName': 'Color Name',
+  'colorCode': 'Color Code',
+  'addColor': 'Add Color',
+  'remove': 'Remove',
+  'memories': 'Memories',
+  'memory': 'Memory',
+  'addMemory': 'Add Memory',
+  'ram': 'Ram',
+  'addRam': 'Add Ram',
+
 
 } as const

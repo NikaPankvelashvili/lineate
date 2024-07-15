@@ -1,5 +1,6 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { AddBlogType, TranslatedText } from "../types/blogTypes";
+import { AddProductType, Product } from "../types/products";
 
 export async function getProductDetail(id: string) {
   const response = await fetch(
@@ -308,4 +309,31 @@ export async function updateBlogById(
     console.error("Error updating blog:", error);
     throw error;
   }
+}
+
+
+export async function createProduct({ title, description, price, stock, type, colors, memories, ram, photos}: AddProductType) {
+  return await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/add-product`, {
+    method: "POST",
+    cache: "no-store",
+
+    headers: {
+      "Content-Type": "application/json",
+
+    },
+    body: JSON.stringify({ title, description, price, stock, type, colors, memories, ram, photos}),
+  });
+}
+
+export async function editProduct(
+  {id, title, description, price, stock, type, colors, memories, ram, photos,}: Product
+) {
+  return await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/update-product/${id}`, {
+    method: "PUT",
+    cache: "no-store",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({title, description, price, stock, type, colors, memories, ram, photos}),
+  });
 }

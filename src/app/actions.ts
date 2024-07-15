@@ -2,10 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { CartProductType } from "../types/cartTypes";
-import { createBlog, deleteBlogById, deleteProductById, EditProfile, getUserId, updateBlogById } from "./api";
+import { createBlog, createProduct, deleteBlogById, deleteProductById, editProduct, EditProfile, getUserId, updateBlogById } from "./api";
 import { redirect } from "next/navigation";
 import { User } from "../types/user";
 import { AddBlogType, BlogType } from "../types/blogTypes";
+import { AddProductType, Product, ProductType } from "../types/products";
 
 export const handleAddToCartDB = async (products: CartProductType[]) => {
   "use server";
@@ -76,6 +77,7 @@ export const deleteProduct: (id: number) => Promise<void> = async (id: number) =
   await deleteProductById(id);
   revalidatePath("/product")
   revalidatePath("/admin")
+  revalidatePath("/admin/products")
 };
 
 
@@ -113,4 +115,23 @@ export async function updateBlog(blog: BlogType) {
   revalidatePath("/admin");
   revalidatePath("/blog");
   await updateBlogById(id, title, description, image_url);
+}
+
+
+export async function createAddProductAction(productData: AddProductType) {
+  const {title, description, price, type, stock, photos, ram, colors, memories} = productData;
+  revalidatePath("/product")
+  revalidatePath("/admin")
+  revalidatePath("/admin/products")
+  await createProduct({title, description, price, type, stock, photos, ram,colors, memories});
+}
+
+export async function editProductAction({productData}: {productData: Product}) {
+  const {id, title, description, price, type, stock, photos, ram, colors, memories } = productData;
+
+  revalidatePath("/product");
+  revalidatePath(`/product/${id}`);
+  revalidatePath("/admin");
+
+  await editProduct({id, title, description, price, stock, type, colors, memories, ram, photos});
 }
