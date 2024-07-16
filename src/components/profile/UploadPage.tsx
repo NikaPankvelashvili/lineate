@@ -132,9 +132,9 @@ export default function UploadPage({ userImage }: { userImage: string }) {
       >
         <button
           type="submit"
-          className="bg-[#11545c] hover:bg-[#0d433f] text-white text-xs py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+          className="bg-[#0071e3] rounded px-2 py-1 hover:bg-[#0056b3] ease-in-out duration-300 text-white"
         >
-          upload
+          {t("upload")}
         </button>
       </form>
     </div>

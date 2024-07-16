@@ -93,6 +93,7 @@ export default{
   'address': 'მისამართი',
   'yourInfoIsUpdated': 'ინფორმაცია განახლდა წარმატებით',
   'update': 'განახლება',
+  'editProfile': 'რედაქტირება',
 
   // Add Product
   'invalidType': 'არასწორი ტიპი',

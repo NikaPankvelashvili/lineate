@@ -53,7 +53,7 @@ export default function ProfileInfo({ user }: { user: any }) {
       }}
     >
       {({ isSubmitting }) => (
-        <Form className="text-gray-700 dark:text-gray-200 max-w-lg mx-auto p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+        <Form className="text-gray-700 dark:text-gray-200 max-w-lg mx-auto p-6 bg-white dark:bg-[#2b2b2c] shadow-md rounded-lg">
           <table className="min-w-full">
             <tbody>
               <tr>
@@ -70,7 +70,7 @@ export default function ProfileInfo({ user }: { user: any }) {
                   <Field
                     type="text"
                     name="name"
-                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200"
+                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-[#161617] text-gray-700 dark:text-gray-200"
                   />
                   <ErrorMessage
                     name="name"
@@ -87,7 +87,7 @@ export default function ProfileInfo({ user }: { user: any }) {
                   <Field
                     type="text"
                     name="phone"
-                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200"
+                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-[#161617] text-gray-700 dark:text-gray-200"
                   />
                   <ErrorMessage
                     name="phone"
@@ -104,7 +104,7 @@ export default function ProfileInfo({ user }: { user: any }) {
                   <Field
                     type="text"
                     name="address"
-                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200"
+                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-[#161617] text-gray-700 dark:text-gray-200"
                   />
                   <ErrorMessage
                     name="address"
@@ -127,7 +127,8 @@ export default function ProfileInfo({ user }: { user: any }) {
           )}
           <button
             type="submit"
-            className="mt-6 text-lg leading-6 h-10 bg-[#11545c] hover:bg-[#11545c] text-white px-4 py-2 rounded-md shadow-md  transition duration-300"
+            // className="mt-6 text-lg leading-6 h-10 bg-[#11545c] hover:bg-[#11545c] text-white px-4 py-2 rounded-md shadow-md  transition duration-300"
+            className="bg-[#0071e3] rounded px-4 py-2 hover:bg-[#0056b3] ease-in-out duration-300 text-white mt-6"
             disabled={isSubmitting}
           >
             {t("update")}

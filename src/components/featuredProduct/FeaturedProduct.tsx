@@ -43,7 +43,7 @@ const FeaturedProduct = async ({
                 }`}
               </Link>
               <Link
-                href={"/products"}
+                href={"/blog"}
                 className=" bg-transparent border border-[#0071e3] rounded-full px-4 py-2 hover:bg-[#0071e3] ease-in-out duration-300"
               >
                 {t("learnMore")}

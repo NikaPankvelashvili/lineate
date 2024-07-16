@@ -97,7 +97,7 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
           ))}
         </div>
         <div className="flex items-center gap-2">
-          {product.ram.map((ram, index) => (
+          {product.ram?.map((ram, index) => (
             <button
               onClick={(e) => setSelectedRam(parseInt(e.currentTarget.value))}
               value={index}

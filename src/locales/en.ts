@@ -94,6 +94,8 @@ export default{
   'address': 'Address',
   'yourInfoIsUpdated': 'Your information is updated',
   'update': 'Update',
+  'editProfile': 'Edit Profile',
+
 
   // Add Product
   'invalidType': 'Invalid Type',
