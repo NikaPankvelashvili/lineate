@@ -41,7 +41,7 @@ const ProductCard = ({
           className={`${
             !hovered ? "opacity-0" : "opacity-100"
           } absolute top-0 left-0 transition-opacity duration-300`}
-          src={photos[1].url}
+          src={photos[1]?.url || photos[0]?.url || ""}
           alt={title}
           width={300}
           height={300}
