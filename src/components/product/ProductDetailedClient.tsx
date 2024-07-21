@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useI18n } from "@/src/locales/client";
 import { useTheme } from "next-themes";
+import { mapMemoryToString } from "./utils/products";
 
 const ProductDetailedClient = ({ product }: { product: Product }) => {
   const [selectedColor, setSelectedColor] = useState<string>(
@@ -43,15 +44,15 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
   console.log(cartContext.products);
 
   return (
-    <main className="flex px-[7%] py-12 gap-12 dark:bg-dark-primary bg-light-primary min-h-screen justify-between">
-      <div className="flex w-1/2">
-        <div className="flex flex-col gap-4">
+    <main className="flex px-[7%] py-12 gap-12 dark:bg-dark-primary bg-light-primary min-h-screen justify-between max-lg:flex-col max-lg">
+      <div className="flex w-full max-lg:justify-center max-lg:items-center max-lg:flex-col-reverse">
+        <div className="flex flex-col gap-4 max-lg:flex-row">
           {product.photos
             .filter((photo) => photo.color === selectedColor)
             .map((photo) => (
               <div
                 key={photo.id}
-                className="dark:bg-dark-secondary bg-light-secondary rounded"
+                className="dark:bg-dark-secondary bg-light-secondary rounded "
               >
                 <Image
                   className="cursor-pointer"
@@ -75,62 +76,75 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
           />
         </div>
       </div>
-      <div className="w-1/2 ">
+      <div className="w-full max-lg:flex  max-lg:flex-col max-lg:items-center">
         <h1 className="text-3xl text-white font-bold mb-16">{product.title}</h1>
-        <p className="text-white mb-8">{product.description}</p>
+        <p className="text-white mb-8 max-lg:text-center">
+          {product.description}
+        </p>
         <p className="text-white mb-4">{`Starting at: ${product.price}$`}</p>
-        <div className="flex gap-2 items-center mb-4">
-          {product.colors.map((color, index) => (
-            <button
-              className={`p-4 rounded-full ${
-                selectedColor === color.colorCode ? "border-2 border-black" : ""
-              }`}
-              key={index}
-              value={color.colorCode}
-              onClick={(e) =>
-                handleColorChange(
-                  e,
-                  product,
-                  selectedColor,
-                  setSelectedColor,
-                  setSelectedImage
-                )
-              }
-              style={{ backgroundColor: color.colorCode }}
-            ></button>
-          ))}
+        <div className="mt-2 flex flex-col gap-4 max-lg:items-center">
+          <span className="text-white text-xl">{t("color")}:</span>
+          <div className="flex gap-2 items-center mb-4 flex-wrap max-lg:justify-center">
+            {product.colors.map((color, index) => (
+              <button
+                className={`p-4 rounded-full ${
+                  selectedColor === color.colorCode
+                    ? "border-2 border-black"
+                    : ""
+                }`}
+                key={index}
+                value={color.colorCode}
+                onClick={(e) =>
+                  handleColorChange(
+                    e,
+                    product,
+                    selectedColor,
+                    setSelectedColor,
+                    setSelectedImage
+                  )
+                }
+                style={{ backgroundColor: color.colorCode }}
+              ></button>
+            ))}
+          </div>
         </div>
-        <div className="flex items-center gap-2 mb-4">
-          {product.memories.map((memory, index) => (
-            <button
-              className={`text-white p-5 dark:bg-dark-secondary bg-light-secondary rounded ${
-                selectedMemory === index ? "border-2 border-black" : ""
-              }`}
-              value={index}
-              key={index}
-              onClick={(e) =>
-                setSelectedMemory(parseInt(e.currentTarget.value))
-              }
-            >
-              {memory}
-            </button>
-          ))}
+        <div className="mt-2 flex flex-col gap-4 max-lg:items-center">
+          <span className="text-white text-xl">{t("memory")}:</span>
+          <div className="flex items-center gap-2 mb-4 flex-wrap max-lg:justify-center max-sm:flex-col">
+            {product.memories.map((memory, index) => (
+              <button
+                className={`text-white p-5 min-w-28 max-sm:min-w-48 dark:bg-dark-secondary bg-light-secondary rounded ${
+                  selectedMemory === index ? "border-2 border-black" : ""
+                }`}
+                value={index}
+                key={index}
+                onClick={(e) =>
+                  setSelectedMemory(parseInt(e.currentTarget.value))
+                }
+              >
+                {mapMemoryToString(memory)}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          {product.ram?.map((ram, index) => (
-            <button
-              onClick={(e) => setSelectedRam(parseInt(e.currentTarget.value))}
-              value={index}
-              className={`text-white p-5 dark:bg-dark-secondary bg-light-secondary rounded ${
-                selectedRam === index ? "border-2 border-black" : ""
-              }`}
-              key={index}
-            >
-              {ram}
-            </button>
-          ))}
+        <div className="mt-2 flex flex-col gap-4 max-lg:items-center">
+          <span className="text-white text-xl">{t("ram")}:</span>
+          <div className="flex items-center gap-2 flex-wrap max-lg:justify-center max-sm:flex-col">
+            {product.ram?.map((ram, index) => (
+              <button
+                onClick={(e) => setSelectedRam(parseInt(e.currentTarget.value))}
+                value={index}
+                className={`text-white p-5 min-w-28 max-sm:min-w-48 dark:bg-dark-secondary bg-light-secondary rounded ${
+                  selectedRam === index ? "border-2 border-black" : ""
+                }`}
+                key={index}
+              >
+                {ram}GB
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="my-14 flex flex-col gap-5 items-start">
+        <div className="my-8 flex flex-col gap-5 items-start max-lg:items-center">
           <span className="text-white text-2xl font-bold">{`Total: ${calculateTotalPrice(
             product
           )}$`}</span>

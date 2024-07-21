@@ -4,6 +4,13 @@ import { getUserInfo } from "../../api";
 import { redirect } from "next/navigation";
 import { getI18n } from "@/src/locales/server";
 import LinkToSection from "@/src/components/admin/LinkToSection";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ADMIN PANEL",
+  description:
+    "The Napplet Store is the best place to buy Apple products from all around the world. Find the latest iPhones, MacBooks, Apple Watches, and more.",
+};
 
 const AdminPage = async () => {
   const user: User = await getUserInfo();

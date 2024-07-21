@@ -4,6 +4,13 @@ import ProfileClient from "@/src/components/profile/ProfileClient";
 import Link from "next/link";
 import { getI18n } from "@/src/locales/server";
 import UploadPage from "@/src/components/profile/UploadPage";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Profile",
+  description:
+    "The Napplet Store is the best place to buy Apple products from all around the world. Find the latest iPhones, MacBooks, Apple Watches, and more.",
+};
 
 const ProfilePage = async () => {
   const user: User = await getUserInfo();

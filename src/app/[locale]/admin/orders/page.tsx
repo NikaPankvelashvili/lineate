@@ -5,6 +5,13 @@ import { IoMdReturnLeft } from "react-icons/io";
 import { Order } from "@/src/types/generalType";
 import React from "react";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ADMIN | Orders",
+  description:
+    "The Napplet Store is the best place to buy Apple products from all around the world. Find the latest iPhones, MacBooks, Apple Watches, and more.",
+};
 
 const AdminOrdersPage = async () => {
   const orders: Order[] = await getOrders();

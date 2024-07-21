@@ -54,6 +54,16 @@ const TypeFilter = ({
         />
         <span className="ml-2">iPad</span>
       </label>
+      <label htmlFor="Apple Watch" className="mb-1">
+        <input
+          type="checkbox"
+          id="Apple Watch"
+          value={"apple watch"}
+          checked={selectedType.includes("apple watch")}
+          onChange={(e) => handleTypeChange(e, setSelectedType)}
+        />
+        <span className="ml-2">Apple Watch</span>
+      </label>
     </fieldset>
   );
 };

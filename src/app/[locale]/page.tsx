@@ -5,6 +5,13 @@ import MacImage from "@assets/macbook_pro.png";
 import IPhoneImage from "@assets/iphone.png";
 import AppleWatchImage from "@assets/watch.png";
 import AllProductsImage from "@assets/all_products.png";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Napplet",
+  description:
+    "The Napplet Store is the best place to buy Apple products from all around the world. Find the latest iPhones, MacBooks, Apple Watches, and more.",
+};
 
 export default async function Home() {
   // const products = await getProducts();

@@ -227,6 +227,10 @@ const ProductClient = ({ products }: { products: Product[] }) => {
               <ProductSkeleton index={5} />
               <ProductSkeleton index={6} />
             </>
+          ) : filteredProduct().slice(0, visibleCards).length === 0 ? (
+            <div className="flex w-full justify-start items-center mt-8">
+              <h1 className="text-white text-2xl">{t("noProductsFound")}</h1>
+            </div>
           ) : (
             filteredProduct()
               .slice(0, visibleCards)

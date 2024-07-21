@@ -22,12 +22,6 @@ import { useTheme } from "next-themes";
 const CartPage = () => {
   const cartContext: CartContextType = useContext(CartContext);
 
-  // const calculateTotalPrice = () => {
-  //   return cartContext.products.reduce((acc, product) => {
-  //     return acc + product.price * product.quantity;
-  //   }, 0);
-  // };
-
   const { theme, setTheme } = useTheme();
 
   const router = useRouter();

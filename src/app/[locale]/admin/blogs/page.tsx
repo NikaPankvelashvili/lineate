@@ -9,6 +9,13 @@ import { User } from "@/src/types/user";
 import { IoMdReturnLeft } from "react-icons/io";
 import Link from "next/link";
 import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ADMIN | Blogs",
+  description:
+    "The Napplet Store is the best place to buy Apple products from all around the world. Find the latest iPhones, MacBooks, Apple Watches, and more.",
+};
 
 const AdminBlogsPage = async () => {
   const blogs: BlogType[] = await getBlogs();

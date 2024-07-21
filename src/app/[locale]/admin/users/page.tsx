@@ -5,6 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoMdReturnLeft } from "react-icons/io";
 import HighlightUser from "@/src/components/admin/HighlightUser";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ADMIN | Users",
+  description:
+    "The Napplet Store is the best place to buy Apple products from all around the world. Find the latest iPhones, MacBooks, Apple Watches, and more.",
+};
 
 const AdminUsersPage = async () => {
   const users: User[] = await getUsers();

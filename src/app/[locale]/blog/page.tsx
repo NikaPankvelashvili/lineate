@@ -4,10 +4,12 @@ import { unstable_noStore as noStore } from "next/cache";
 import { getBlogs } from "../../api";
 import BlogClient from "@/src/components/blogs/BlogClient";
 import { BlogType } from "@/src/types/blogTypes";
+import { Metadata } from "next";
 
-export const metadata = {
-  title: "Blog",
-  description: "Blog by Next",
+export const metadata: Metadata = {
+  title: "Napplet | Blog",
+  description:
+    "The Napplet Store is the best place to buy Apple products from all around the world. Find the latest iPhones, MacBooks, Apple Watches, and more.",
 };
 
 export default async function Blog() {
