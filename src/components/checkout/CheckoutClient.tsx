@@ -58,6 +58,8 @@ const CheckoutClient = ({ user }: { user: User }) => {
     await checkout(products, profile);
   };
 
+  console.log("FROM CHECKOUT", products);
+
   return (
     <main className="px-[8%] dark:bg-dark-primary bg-light-primary py-24">
       <div className="bg-white dark:bg-dark-primary bg-light-primary text-white">
@@ -70,7 +72,9 @@ const CheckoutClient = ({ user }: { user: User }) => {
             Total price: $
             {cartContext.products?.length === 0
               ? Number(0).toFixed(2)
-              : Number(calculateTotalPrice({ cartContext })) * 1.02 + 5}
+              : (Number(calculateTotalPrice({ cartContext })) * 1.02).toFixed(
+                  2
+                )}
           </h3>
           <span className="text-[#0071e3]  mt-2">TAXES ARE INCLUDED</span>
           <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">

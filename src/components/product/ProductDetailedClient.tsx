@@ -33,6 +33,15 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
   //   console.log(cartContext.products);
   // }, [cartContext]);
 
+  const calculateTotalPrice = (product: Product) => {
+    if (selectedMemory === -1 && selectedRam === -1) return product.price;
+    if (selectedMemory === -1) return Number(product.price) + selectedRam * 100;
+    if (selectedRam === -1) return Number(product.price) + selectedMemory * 50;
+    return Number(product.price) + selectedMemory * 50 + selectedRam * 100;
+  };
+
+  console.log(cartContext.products);
+
   return (
     <main className="flex px-[7%] py-12 gap-12 dark:bg-dark-primary bg-light-primary min-h-screen justify-between">
       <div className="flex w-1/2">
@@ -122,7 +131,9 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
           ))}
         </div>
         <div className="my-14 flex flex-col gap-5 items-start">
-          <span className="text-white text-2xl font-bold">{`Total: ${product.price}$`}</span>
+          <span className="text-white text-2xl font-bold">{`Total: ${calculateTotalPrice(
+            product
+          )}$`}</span>
           <button
             className={`text-white px-4 py-2 hover:bg-[#0056b3] bg-[#0071e3] rounded-full ${
               selectedMemory === -1 || selectedRam === -1
@@ -132,7 +143,9 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
             disabled={selectedMemory === -1 || selectedRam === -1}
             onClick={() =>
               handleAddToCart({
-                product,
+                id: product.id,
+                title: product.title,
+                price: calculateTotalPrice(product),
                 color: product.colors.find(
                   (color) => color.colorCode === selectedColor
                 ) || { colorCode: "", colorName: "" },
