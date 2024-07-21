@@ -24,6 +24,8 @@ export default{
   'price': 'ფასი',
   'learnMore': 'გაიგე მეტი',
   'allProducts': 'ყველა პროდუქტი',
+  'filter': 'ფილტრი',
+  'addToCart': 'კალათაში დამატება',
 
   // Filters
   'typeFilter': 'აირჩიეთ ტიპი',

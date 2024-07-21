@@ -23,7 +23,7 @@ const ProductCard = ({
   return (
     <button
       onClick={() => router.push(`/products/${id}`)}
-      className="flex flex-col w-4/5 max-w-80 text-white border-gray-200  m-4 rounded-lg items-center min-h-[400px] justify-around cursor-pointer dark:bg-dark-secondary bg-light-secondary"
+      className="flex flex-col w-4/5 max-w-80 text-white border-gray-200  m-4 rounded-lg items-center min-h-[500px] justify-around cursor-pointer dark:bg-dark-secondary bg-light-secondary"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -36,6 +36,7 @@ const ProductCard = ({
           alt={title}
           width={300}
           height={300}
+          priority
         />
         <Image
           className={`${

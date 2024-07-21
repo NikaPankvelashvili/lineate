@@ -14,10 +14,10 @@ const PriceFilter = ({
   const t = useI18n();
 
   return (
-    <fieldset>
-      <legend className="text-white">{t("priceFilter")}</legend>
-      <div className="flex justify-between w-full items-center mt-3">
-        <div className="p-3 dark:bg-dark-primary bg-[#ffffff]  relative rounded-lg flex content-between text-xs max-lg:w-1/2 ">
+    <fieldset className="text-white">
+      <legend className="mb-2">{t("priceFilter")}</legend>
+      <div className="flex flex-col sm:flex-row justify-between w-full items-center mt-3">
+        <div className="p-3 dark:bg-dark-primary bg-[#ffffff] relative rounded-lg flex content-between text-xs w-full sm:w-1/2 mb-3 sm:mb-0">
           <input
             type="number"
             className="focus:outline-none w-full bg-inherit dark:text-white text-black"
@@ -32,7 +32,7 @@ const PriceFilter = ({
           />
         </div>
         <span className="mx-3 text-[#8C929B] select-none">{"-"}</span>
-        <div className="p-3 dark:bg-dark-primary bg-[#ffffff] relative rounded-lg flex content-between text-xs max-lg:w-1/2">
+        <div className="p-3 dark:bg-dark-primary bg-[#ffffff] relative rounded-lg flex content-between text-xs w-full sm:w-1/2">
           <input
             type="number"
             className="focus:outline-none w-full bg-inherit dark:text-white text-black"

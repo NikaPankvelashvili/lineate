@@ -17,6 +17,7 @@ import { calculateTotalPrice } from "@/src/components/cart/utils";
 import { useRouter } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useTheme } from "next-themes";
 
 const CartPage = () => {
   const cartContext: CartContextType = useContext(CartContext);
@@ -27,7 +28,7 @@ const CartPage = () => {
   //   }, 0);
   // };
 
-  console.log(cartContext.products);
+  const { theme, setTheme } = useTheme();
 
   const router = useRouter();
 
@@ -70,7 +71,7 @@ const CartPage = () => {
                     </div>
                   </li>
                 )}
-                {cartContext.products.map((product, productIdx) => (
+                {cartContext.products?.map((product, productIdx) => (
                   <li key={product.id} className="flex py-6 sm:py-10">
                     <div className="flex-shrink-0">
                       <Image
@@ -323,7 +324,7 @@ const CartPage = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme={theme}
         limit={5}
       />
     </main>
