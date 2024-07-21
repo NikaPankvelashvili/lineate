@@ -26,6 +26,7 @@ export default{
   'allProducts': 'ყველა პროდუქტი',
   'filter': 'ფილტრი',
   'addToCart': 'კალათაში დამატება',
+  'noProductsFound': 'პროდუქტები არ მოიძებნა',
 
   // Filters
   'typeFilter': 'აირჩიეთ ტიპი',

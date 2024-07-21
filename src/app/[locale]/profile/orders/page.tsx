@@ -3,8 +3,13 @@ import OrdersClient from "@/src/components/orders/OrdersClient";
 import { Order } from "@/src/types/generalType";
 import { getSession } from "@auth0/nextjs-auth0";
 import React from "react";
+import { Metadata } from "next";
 
-// export const revalidate = 1;
+export const metadata: Metadata = {
+  title: "Orders History",
+  description:
+    "The Napplet Store is the best place to buy Apple products from all around the world. Find the latest iPhones, MacBooks, Apple Watches, and more.",
+};
 
 export const dynamic = "force-dynamic";
 

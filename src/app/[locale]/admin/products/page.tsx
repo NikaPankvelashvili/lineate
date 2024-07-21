@@ -9,7 +9,13 @@ import Link from "next/link";
 import React from "react";
 import cn from "classnames";
 import { mapMemoryToString } from "@/src/components/product/utils/products";
-import { hash } from "crypto";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ADMIN | Products",
+  description:
+    "The Napplet Store is the best place to buy Apple products from all around the world. Find the latest iPhones, MacBooks, Apple Watches, and more.",
+};
 
 const AdminProductsPage = async () => {
   const products: Product[] = await getProducts();

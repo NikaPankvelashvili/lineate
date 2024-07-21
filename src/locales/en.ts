@@ -26,6 +26,7 @@ export default{
   'allProducts': 'All Products',
   'filter': 'Filter',
   'addToCart': 'Add To Cart',
+  'noProductsFound': 'No Products Found',
 
   // Filters
   'typeFilter': 'Choose Type',
