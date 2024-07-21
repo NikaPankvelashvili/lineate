@@ -72,7 +72,7 @@ const CartPage = () => {
                   </li>
                 )}
                 {cartContext.products?.map((product, productIdx) => (
-                  <li key={product.id} className="flex py-6 sm:py-10">
+                  <li key={productIdx} className="flex py-6 sm:py-10">
                     <div className="flex-shrink-0">
                       <Image
                         alt={product.title}
@@ -129,7 +129,9 @@ const CartPage = () => {
                               onClick={(e) => {
                                 e.preventDefault();
                                 handleAddToCart({
-                                  product,
+                                  id: product.id,
+                                  title: product.title,
+                                  price: product.price,
                                   color: product.color,
                                   memory: product.memory,
                                   ram: product.ram,
@@ -152,7 +154,9 @@ const CartPage = () => {
                               onClick={(e) => {
                                 e.preventDefault();
                                 handleAddToCart({
-                                  product,
+                                  id: product.id,
+                                  title: product.title,
+                                  price: product.price,
                                   color: product.color,
                                   memory: product.memory,
                                   ram: product.ram,
@@ -176,7 +180,9 @@ const CartPage = () => {
                               onClick={(e) => {
                                 e.preventDefault();
                                 handleAddToCart({
-                                  product,
+                                  id: product.id,
+                                  title: product.title,
+                                  price: product.price,
                                   color: product.color,
                                   memory: product.memory,
                                   ram: product.ram,
