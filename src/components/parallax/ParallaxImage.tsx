@@ -13,8 +13,8 @@ const ParallaxImage = ({ image, phrase, secondary }: ParallaxImageProps) => {
             backgroundImage: `url(${image})`,
           }}
         >
-          <div className="text-white absolute top-1/2 text-base w-full text-center">
-            <h1 className="text-8xl select-none">{phrase}</h1>
+          <div className="text-white absolute top-1/2 text-base w-full text-center ">
+            <h1 className="text-8xl select-none max-sm:text-7xl">{phrase}</h1>
           </div>
         </div>
       </h1>

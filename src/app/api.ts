@@ -326,7 +326,7 @@ export async function createProduct({ title, description, price, stock, type, co
 }
 
 export async function editProduct(
-  {id, title, description, price, stock, type, colors, memories, ram, photos,}: Product
+  {id, title, description, price, stock, type, colors, memories, ram, photos}: Product
 ) {
   return await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/update-product/${id}`, {
     method: "PUT",

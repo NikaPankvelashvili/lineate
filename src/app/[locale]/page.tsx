@@ -10,7 +10,7 @@ export default async function Home() {
   // const products = await getProducts();
 
   return (
-    <div className="bg-[#161617]">
+    <div className="dark:bg-dark-primary bg-light-primary">
       <ParallaxImage
         image="https://www.apple.com/newsroom/images/2023/09/apple-unveils-iphone-15-pro-and-iphone-15-pro-max/tile/Apple-iPhone-15-Pro-lineup-hero-230912.jpg.landing-big_2x.jpg"
         phrase="So Pro."

@@ -126,7 +126,17 @@ export async function createAddProductAction(productData: AddProductType) {
   await createProduct({title, description, price, type, stock, photos, ram,colors, memories});
 }
 
-export async function editProductAction({productData}: {productData: Product}) {
+// export async function editProductAction({productData}: {productData: Product}) {
+//   const {id, title, description, price, type, stock, photos, ram, colors, memories } = productData;
+
+//   revalidatePath("/product");
+//   revalidatePath(`/product/${id}`);
+//   revalidatePath("/admin");
+
+//   await editProduct({id, title, description, price, stock, type, colors, memories, ram, photos});
+// }
+
+export async function editProductAction({ productData }: {productData: Product}) {
   const {id, title, description, price, type, stock, photos, ram, colors, memories } = productData;
 
   revalidatePath("/product");
@@ -134,4 +144,15 @@ export async function editProductAction({productData}: {productData: Product}) {
   revalidatePath("/admin");
 
   await editProduct({id, title, description, price, stock, type, colors, memories, ram, photos});
+}
+
+export async function createRefund(charge: string) {
+  revalidatePath("/admin");
+  await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/create-refund", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ charge }),
+  });
 }

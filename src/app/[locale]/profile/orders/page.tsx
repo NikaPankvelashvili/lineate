@@ -4,6 +4,10 @@ import { Order } from "@/src/types/generalType";
 import { getSession } from "@auth0/nextjs-auth0";
 import React from "react";
 
+// export const revalidate = 1;
+
+export const dynamic = "force-dynamic";
+
 const OrdersPage = async () => {
   const allOrders = await getOrders();
   const user = await getSession();
@@ -13,13 +17,13 @@ const OrdersPage = async () => {
   );
 
   return (
-    <div className="container mx-auto px-[4%] py-4">
+    <div className="container mx-auto px-[4%] py-24 min-h-screen bg-light-primary dark:bg-dark-primary">
       <OrdersClient />
-      <h2 className="text-2xl font-semibold mb-4">Orders</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-white">Orders</h2>
       <div className="overflow-x-auto">
         <table className="table-auto w-full">
           <thead>
-            <tr className="bg-[#161616]">
+            <tr className="dark:bg-dark-secondary bg-light-secondary text-white">
               <th className="px-4 py-2 dark:text-white">Total Price</th>
               <th className="px-4 py-2 dark:text-white">Status</th>
               <th className="px-4 py-2 dark:text-white">Address</th>
@@ -32,28 +36,28 @@ const OrdersPage = async () => {
               order.latest_charge ? (
                 <tr
                   key={order.latest_charge.id}
-                  className="bg-white dark:bg-gray-800 rounded-md shadow-md mb-4"
+                  className="bg-white dark:bg-dark-secondary rounded-md shadow-md mb-4"
                 >
-                  <td className="border px-4 py-2 dark:border-gray-700 dark:text-white">
+                  <td className="border px-4 py-2 dark:border-gray-700 text-white">
                     ${(order.amount / 100).toFixed(2)}
                   </td>
-                  <td className="border px-4 py-2 dark:border-gray-700 dark:text-white">
+                  <td className="border px-4 py-2 dark:border-gray-700 text-white">
                     {order.latest_charge.refunded === true
                       ? "Refunded"
                       : "Paid"}
                   </td>
-                  <td className="border px-4 py-2 dark:border-gray-700 dark:text-white">
+                  <td className="border px-4 py-2 dark:border-gray-700 text-white">
                     {order.metadata?.address || "N/A"}
                   </td>
-                  <td className="border px-4 py-2 dark:border-gray-700 dark:text-white">
+                  <td className="border px-4 py-2 dark:border-gray-700 text-white">
                     {order.metadata?.phone || "N/A"}
                   </td>
-                  <td className="border px-4 py-2 dark:border-gray-700 dark:text-white">
+                  <td className="border px-4 py-2 dark:border-gray-700 text-white">
                     <a
                       href={order.latest_charge.receipt_url}
                       aria-label="Order Receipt"
                       target="_blank"
-                      className="text-red-600 dark:text-red-400 underline"
+                      className="text-[#c03b3b] underline"
                       rel="noopener noreferrer"
                     >
                       View Receipt

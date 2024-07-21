@@ -121,7 +121,7 @@
 //                 </label>
 //                 <Field
 //                   className={`shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
-//                     errors.title_en && touched.title_en ? "border-red-500" : ""
+//                     errors.title_en && touched.title_en ? "border-[#ff0000]" : ""
 //                   }`}
 //                   id="title"
 //                   name="title"
@@ -129,7 +129,7 @@
 //                   placeholder={t("title")}
 //                 />
 //                 {errors.title && touched.title && (
-//                   <p className="text-red-500 text-xs italic">
+//                   <p className="text-[#ff0000] text-xs italic">
 //                     {errors.title[locale]}
 //                   </p>
 //                 )}
@@ -141,7 +141,7 @@
 //                 <Field
 //                   className={`shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
 //                     errors.description && touched.description
-//                       ? "border-red-500"
+//                       ? "border-[#ff0000]"
 //                       : ""
 //                   }`}
 //                   name="description"
@@ -149,7 +149,7 @@
 //                   placeholder={t("description")}
 //                 />
 //                 {errors.description && touched.description && (
-//                   <p className="text-red-500 text-xs italic">
+//                   <p className="text-[#ff0000] text-xs italic">
 //                     {errors.description[locale]}
 //                   </p>
 //                 )}
@@ -161,7 +161,7 @@
 //                 <input
 //                   className={`shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
 //                     errors.image_url && touched.image_url
-//                       ? "border-red-500"
+//                       ? "border-[#ff0000]"
 //                       : ""
 //                   }`}
 //                   type="file"
@@ -308,7 +308,7 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
   return (
     <>
       <button
-        className="bg-[#11545c] hover:bg-[#11545c] text-white font-bold py-2 px-4 rounded"
+        className="bg-[#0071e3] hover:bg-[#0056b3] mb-4 text-white font-bold py-2 px-4 rounded"
         onClick={handleOpen}
       >
         {t("addBlog")}
@@ -327,7 +327,7 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
           onSubmit={handleSubmit}
         >
           {({ setFieldValue, errors, touched, isSubmitting, isValid }) => (
-            <Form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <Form className="bg-[#fff] shadow-md rounded px-8 pt-6 pb-8 mb-4 dark:text-white dark:bg-dark-secondary">
               <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
@@ -336,9 +336,9 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   {t("titleEn")}
                 </label>
                 <Field
-                  className={`shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
+                  className={`shadow appearance-none border dark:text-white rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
                     errors.title?.en && touched.title?.en
-                      ? "border-red-500"
+                      ? "border-[#ff0000]"
                       : ""
                   }`}
                   id="title_en"
@@ -347,7 +347,7 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   placeholder={t("title")}
                 />
                 {errors.title?.en && touched.title?.en && (
-                  <p className="text-red-500 text-xs italic">
+                  <p className="text-[#ff0000] text-xs italic">
                     {errors.title.en}
                   </p>
                 )}
@@ -360,9 +360,9 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   {t("titleKa")}
                 </label>
                 <Field
-                  className={`shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
+                  className={`shadow appearance-none border dark:text-white rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
                     errors.title?.ka && touched.title?.ka
-                      ? "border-red-500"
+                      ? "border-[#ff0000]"
                       : ""
                   }`}
                   id="title_ka"
@@ -371,7 +371,7 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   placeholder={t("title")}
                 />
                 {errors.title?.ka && touched.title?.ka && (
-                  <p className="text-red-500 text-xs italic">
+                  <p className="text-[#ff0000] text-xs italic">
                     {errors.title.ka}
                   </p>
                 )}
@@ -381,9 +381,9 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   {t("descriptionEn")}
                 </label>
                 <Field
-                  className={`shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
+                  className={`shadow appearance-none border dark:text-white rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
                     errors.description?.en && touched.description?.en
-                      ? "border-red-500"
+                      ? "border-[#ff0000]"
                       : ""
                   }`}
                   name="description.en"
@@ -391,7 +391,7 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   placeholder={t("description")}
                 />
                 {errors.description?.en && touched.description?.en && (
-                  <p className="text-red-500 text-xs italic">
+                  <p className="text-[#ff0000] text-xs italic">
                     {errors.description.en}
                   </p>
                 )}
@@ -401,9 +401,9 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   {t("descriptionKa")}
                 </label>
                 <Field
-                  className={`shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
+                  className={`shadow appearance-none border dark:text-white rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
                     errors.description?.ka && touched.description?.ka
-                      ? "border-red-500"
+                      ? "border-[#ff0000]"
                       : ""
                   }`}
                   name="description.ka"
@@ -411,7 +411,7 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   placeholder={t("description")}
                 />
                 {errors.description?.ka && touched.description?.ka && (
-                  <p className="text-red-500 text-xs italic">
+                  <p className="text-[#ff0000] text-xs italic">
                     {errors.description.ka}
                   </p>
                 )}
@@ -424,9 +424,9 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   {t("type")}
                 </label>
                 <Field
-                  className={`shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
+                  className={`shadow appearance-none border dark:text-white rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
                     errors.title?.ka && touched.title?.ka
-                      ? "border-red-500"
+                      ? "border-[#ff0000]"
                       : ""
                   }`}
                   id="type"
@@ -435,7 +435,7 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   placeholder={t("type")}
                 />
                 {errors.title?.ka && touched.title?.ka && (
-                  <p className="text-red-500 text-xs italic">
+                  <p className="text-[#ff0000] text-xs italic">
                     {errors.title.ka}
                   </p>
                 )}
@@ -445,9 +445,9 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
                   {t("image")}
                 </label>
                 <input
-                  className={`shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
+                  className={`shadow appearance-none dark:text-white border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ${
                     errors.image_url && touched.image_url
-                      ? "border-red-500"
+                      ? "border-[#ff0000]"
                       : ""
                   }`}
                   type="file"
@@ -468,7 +468,7 @@ export default function AddNewBlog({ user_id }: { user_id: number }) {
               </div>
               <div className="flex items-center justify-between">
                 <button
-                  className={`bg-[#11545c] hover:bg-[#11545c] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+                  className={`bg-[#0071e3] hover:bg-[#0056b3] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
                     isSubmitting || loading || !isValid
                       ? "opacity-50 cursor-not-allowed"
                       : ""

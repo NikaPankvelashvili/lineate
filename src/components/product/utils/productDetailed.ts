@@ -71,6 +71,7 @@ import { handleAddToCartDB } from "@/src/app/actions";
 import { CartContextType, CartProductType } from "@/src/types/cartTypes";
 import { Color, Product, ProductImage } from "@/src/types/products";
 import _ from "lodash";
+import { toast } from "react-toastify";
 
 export function handleColorChange(e: React.MouseEvent<HTMLButtonElement>,
   product: Product, selectedColor: string, setSelectedColor: React.Dispatch<React.SetStateAction<string>>,
@@ -127,10 +128,14 @@ export function handleAddToCart({
     })
   );
 
+  let toastFlag = false;
+
   if (existingProductIndex !== -1) {
     const updatedProducts = [...cartContext.products];
     updatedProducts[existingProductIndex].quantity += quantity;
     if (updatedProducts[existingProductIndex].quantity === 0) {
+      toast.error("Product completely removed from cart");
+      toastFlag = true;
       updatedProducts.splice(existingProductIndex, 1);
     }
     cartContext.setProducts(updatedProducts);
@@ -138,4 +143,9 @@ export function handleAddToCart({
     cartContext.setProducts([...cartContext.products, toAddProduct]);
   }
 
+  if (!toastFlag && quantity > 0) {
+    toast.success("Product added to cart");
+  } else if (!toastFlag && quantity < 0) {
+    toast.warn("Product removed from cart");
+  }
 }

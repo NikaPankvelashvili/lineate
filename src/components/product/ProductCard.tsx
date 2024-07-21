@@ -23,7 +23,7 @@ const ProductCard = ({
   return (
     <button
       onClick={() => router.push(`/products/${id}`)}
-      className="flex flex-col w-4/5 max-w-80 text-white border-gray-200  m-4 rounded-lg items-center min-h-[400px] justify-around cursor-pointer bg-[#2b2b2c]"
+      className="flex flex-col w-4/5 max-w-80 text-white border-gray-200  m-4 rounded-lg items-center min-h-[400px] justify-around cursor-pointer dark:bg-dark-secondary bg-light-secondary"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -31,7 +31,7 @@ const ProductCard = ({
         <Image
           className={`${
             hovered ? "opacity-0" : "opacity-100"
-          }  top-0 left-0 transition-opacity duration-300`}
+          }  top-0 left-0 transition-opacity duration-300 w-full h-[150px]`}
           src={photos[0].url}
           alt={title}
           width={300}
@@ -55,7 +55,7 @@ const ProductCard = ({
           }`}
         </span>
         <p className="mb-4 font-medium">{`${price}$`}</p>
-        <div className="flex justify-between items-center w-full">
+        <div className="flex justify-between flex-col-reverse gap-4 items-center w-full">
           <Link
             href={"/products"}
             className="bg-[#0071e3] rounded-full px-4 py-1 hover:bg-[#0056b3] ease-in-out duration-300 text-white "

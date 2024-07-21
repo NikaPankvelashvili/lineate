@@ -10,11 +10,14 @@ const getActiveProducts = async () => {
   return availableProducts;
 };
 
+const calculatePriceWithTax = ({price, taxPercentage = 2} : {price: number, taxPercentage: number}) => {
+  return Math.round(Number(price) * 100 * (1 + taxPercentage / 100));
+};
+
 export const POST = async (request: any) => {
   const { products, user } = await request.json();
 
   console.log(products);
-  
 
   const data: CartProductType[] = products;
   let activeProducts = await getActiveProducts();
@@ -28,12 +31,9 @@ export const POST = async (request: any) => {
       if (stripeProduct == undefined) {
         await stripe.products.create({
           name: product.title,
-          default_price_data: {
-            unit_amount: Number(product.price) * 100,
-            currency: "usd",
-          },
           metadata: {
             price: product.price,
+            note: "Price includes 2% tax",
           },
         });
       }
@@ -52,8 +52,15 @@ export const POST = async (request: any) => {
     );
 
     if (stripeProduct) {
+      const priceWithTax = calculatePriceWithTax({price: product.price, taxPercentage: 2}); // Calculate price with tax
+      const priceData = await stripe.prices.create({
+        unit_amount: priceWithTax,
+        currency: "usd",
+        product: stripeProduct.id,
+      });
+
       stripeItems.push({
-        price: stripeProduct?.default_price,
+        price: priceData.id,
         quantity: product?.quantity,
       });
     }

@@ -12,96 +12,28 @@ import { handleAddToCart } from "@/src/components/product/utils/productDetailed"
 import Link from "next/link";
 import _ from "lodash";
 import { mapMemoryToString } from "@/src/components/product/utils/products";
+import { redirect } from "next/navigation";
+import { calculateTotalPrice } from "@/src/components/cart/utils";
+import { useRouter } from "next/navigation";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CartPage = () => {
   const cartContext: CartContextType = useContext(CartContext);
 
-  const calculateTotalPrice = () => {
-    return cartContext.products.reduce((acc, product) => {
-      return acc + product.price * product.quantity;
-    }, 0);
-  };
+  // const calculateTotalPrice = () => {
+  //   return cartContext.products.reduce((acc, product) => {
+  //     return acc + product.price * product.quantity;
+  //   }, 0);
+  // };
 
   console.log(cartContext.products);
 
+  const router = useRouter();
+
   return (
-    <main className="px-[8%] dark:bg-[#161617] py-24">
-      {/* <h1 className="text-5xl">Cart Items</h1>
-      <div className="flex flex-col gap-9">
-        {cartContext.products.map((product) => (
-          <div key={product.id} className="border-2 p-2">
-            <div className="flex w-full justify-between">
-              <h2>{product.title}</h2>
-              <button
-                onClick={() =>
-                  handleAddToCart({
-                    product,
-                    color: product.color,
-                    memory: product.memory,
-                    ram: product.ram,
-                    cartContext,
-                    image_url: product.image_url,
-                    quantity: -product.quantity,
-                  })
-                }
-                className={cn("p-2 rounded-full", {
-                  "bg-red-500": product.quantity > 1,
-                  "bg-red-300": product.quantity === 1,
-                })}
-              >
-                REMOVE
-              </button>
-            </div>
-            <p>{product.price}</p>
-            <div className="flex gap-5">
-              <button
-                onClick={() =>
-                  handleAddToCart({
-                    product,
-                    color: product.color,
-                    memory: product.memory,
-                    ram: product.ram,
-                    cartContext,
-                    image_url: product.image_url,
-                    quantity: -1,
-                  })
-                }
-              >
-                -
-              </button>
-              <p>{product.quantity}</p>
-              <button
-                onClick={() =>
-                  handleAddToCart({
-                    product,
-                    color: product.color,
-                    memory: product.memory,
-                    ram: product.ram,
-                    cartContext,
-                    image_url: product.image_url,
-                    quantity: 1,
-                  })
-                }
-              >
-                +
-              </button>
-            </div>
-            <p>{`Memory ${product.memory}GB`}</p>
-            <p>{`Ram ${product.ram}GB`}</p>
-            <div
-              className={`p-2 rounded-full`}
-              style={{ background: product.color.colorCode }}
-            ></div>
-            <Image
-              src={product.image_url}
-              alt={product.title}
-              width={350}
-              height={350}
-            />
-          </div>
-        ))}
-      </div> */}
-      <div className="bg-white dark:bg-[#161617]">
+    <main className="px-[8%] dark:bg-dark-primary bg-light-primary py-24">
+      <div className="bg-white dark:bg-dark-primary bg-light-primary text-white">
         <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             Shopping Cart
@@ -273,7 +205,7 @@ const CartPage = () => {
             {/* Order summary */}
             <section
               aria-labelledby="summary-heading"
-              className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 dark:bg-[#2b2b2c]"
+              className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 dark:bg-dark-secondary"
             >
               <h2
                 id="summary-heading"
@@ -288,10 +220,10 @@ const CartPage = () => {
                     Subtotal
                   </dt>
                   <dd className="text-sm font-medium text-gray-900 dark:text-gray-200">
-                    ${calculateTotalPrice().toFixed(2)}
+                    ${calculateTotalPrice({ cartContext }).toFixed(2)}
                   </dd>
                 </div>
-                <div className="flex items-center justify-between border-t border-gray-200 pt-4">
+                {/* <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="flex items-center text-sm text-gray-600 dark:text-gray-200">
                     <span>Shipping estimate</span>
                     <a
@@ -313,7 +245,7 @@ const CartPage = () => {
                       ? Number(0).toFixed(2)
                       : 5}
                   </dd>
-                </div>
+                </div> */}
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="flex text-sm text-gray-600 dark:text-gray-200">
                     <span>Tax estimate</span>
@@ -334,7 +266,9 @@ const CartPage = () => {
                     $
                     {cartContext.products.length == 0
                       ? Number(0).toFixed(2)
-                      : 8.32}
+                      : (calculateTotalPrice({ cartContext }) * 0.02).toFixed(
+                          2
+                        )}
                   </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
@@ -345,18 +279,34 @@ const CartPage = () => {
                     $
                     {cartContext.products?.length === 0
                       ? Number(0).toFixed(2)
-                      : Number(calculateTotalPrice()) + 8.32 + 5}
+                      : (
+                          Number(calculateTotalPrice({ cartContext })) * 1.02
+                        ).toFixed(2)}
                   </dd>
                 </div>
               </dl>
 
-              <div className="mt-6">
+              <div className="mt-6 ">
+                {/* { cartContext.products.length < 1 && 
+                <Link
+                  className="w-full flex justify-center rounded-md border border-transparent bg-[#0071e3] px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-[#0056b3] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                  href="/checkout"
+                  
+                >
+                  Checkout
+                </Link>
+                } */}
                 <button
                   type="submit"
                   disabled={cartContext.products?.length === 0}
-                  className="w-full rounded-md border border-transparent bg-[#0071e3] px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-[#0056b3] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    router.push("/checkout");
+                  }}
+                  className={`w-full rounded-md border border-transparent bg-[#0071e3] px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-[#0056b3] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 ${
+                    cartContext.products?.length === 0 && "cursor-not-allowed"
+                  }`}
                 >
-                  {/* <Link className="" href="/checkout">Checkout</Link> */}
                   Checkout
                 </button>
               </div>
@@ -364,6 +314,18 @@ const CartPage = () => {
           </form>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2500}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        limit={5}
+      />
     </main>
   );
 };

@@ -62,7 +62,7 @@ const DropdownMenu = ({
           {userProp ? (
             <div className="w-6 h-6">
               <Image
-                className="hover:text-white hover:cursor-pointer opacity-65 hover:opacity-100 rounded-full dark:text-white"
+                className="hover:text-white hover:cursor-pointer opacity-65 max-md:opacity-100 hover:opacity-100 rounded-full dark:text-white"
                 src={userProp.image_url ? userProp.image_url : ""}
                 alt="profile picture"
                 width={32}
@@ -82,7 +82,7 @@ const DropdownMenu = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-[#161617] dark:ring-gray-700"
+            className="max-md:hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark-primary bg-light-secondary dark:ring-gray-700"
           >
             <div className="py-1">
               <Link
@@ -109,13 +109,13 @@ const DropdownMenu = ({
               >
                 {t("myOrders")}
               </Link>
-              <Link
+              {/* <Link
                 onClick={handleItemClick}
                 href={"/profile/reviews"}
                 className="block w-full px-4 py-2 text-center text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-[#252527b1] dark:hover:text-white"
               >
                 {t("myReviews")}
-              </Link>
+              </Link> */}
               <button
                 onClick={() => {
                   handleItemClick();

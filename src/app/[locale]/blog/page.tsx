@@ -15,7 +15,7 @@ export default async function Blog() {
   noStore();
 
   return (
-    <main className="bg-[#adb5bd] dark:bg-slate-900">
+    <main className="bg-light-primary dark:bg-dark-primary">
       <BlogClient blogsData={blogsData} />
     </main>
   );
