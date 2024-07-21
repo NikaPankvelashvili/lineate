@@ -35,7 +35,8 @@ const MemoryFilter = ({
                   "p-1",
                   "rounded",
                   "text-white",
-                  "bg-[#161617]",
+                  "dark:bg-dark-primary",
+                  "bg-light-primary",
                   included_memory ? "opacity-100" : "opacity-60",
                 ])}
               >

@@ -20,7 +20,7 @@ export default function ProfileInfo({ user }: { user: any }) {
   const t = useI18n();
 
   const validationSchema = Yup.object({
-    name: Yup.string().required(t("Namerequired")),
+    name: Yup.string().required(t("nameRequired")),
     phone: Yup.string().required(t("phoneIsRequired")),
     address: Yup.string().required(t("addressIsRequired")),
   });
@@ -53,63 +53,65 @@ export default function ProfileInfo({ user }: { user: any }) {
       }}
     >
       {({ isSubmitting }) => (
-        <Form className="text-gray-700 dark:text-gray-200 max-w-lg mx-auto p-6 bg-white dark:bg-[#2b2b2c] shadow-md rounded-lg">
+        <Form className="text-gray-700 dark:text-gray-200 max-w-lg mx-auto p-6 bg-white bg-light-secondary dark:bg-dark-secondary shadow-md rounded-lg">
           <table className="min-w-full">
             <tbody>
               <tr>
-                <td className="py-2 px-4 font-medium">{t("email")}</td>
+                <td className="py-2 px-4 font-medium text-white">
+                  {t("email")}
+                </td>
                 <td className="py-2 px-4">
                   <span className="opacity-75">{user?.email}</span>
                 </td>
               </tr>
               <tr>
-                <td className="border-b py-2 px-4 font-medium dark:border-gray-700">
+                <td className="border-b py-2 px-4 font-medium dark:border-gray-700 text-white">
                   {t("name")}
                 </td>
-                <td className="border-b py-2 px-4 dark:border-gray-700">
+                <td className="border-b py-2 px-4 border-[#fff]">
                   <Field
                     type="text"
                     name="name"
-                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-[#161617] text-gray-700 dark:text-gray-200"
+                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-dark-primary text-gray-700 dark:text-gray-200"
                   />
                   <ErrorMessage
                     name="name"
                     component="div"
-                    className="text-red-500 dark:text-red-400"
+                    className="text-[#c43939]"
                   />
                 </td>
               </tr>
               <tr>
-                <td className="border-b py-2 px-4 font-medium dark:border-gray-700">
+                <td className="border-b py-2 px-4 font-medium dark:border-gray-700 text-white">
                   {t("phone")}
                 </td>
-                <td className="border-b py-2 px-4 dark:border-gray-700">
+                <td className="border-b py-2 px-4 border-[#fff]">
                   <Field
                     type="text"
                     name="phone"
-                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-[#161617] text-gray-700 dark:text-gray-200"
+                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-dark-primary text-gray-700 dark:text-gray-200"
                   />
                   <ErrorMessage
                     name="phone"
                     component="div"
-                    className="text-red-500 dark:text-red-400"
+                    className="text-[#c43939]"
                   />
                 </td>
               </tr>
               <tr>
-                <td className="border-b py-2 px-4 font-medium dark:border-gray-700">
+                <td className="border-b py-2 px-4 font-medium dark:border-gray-700 text-white">
                   {t("address")}
                 </td>
-                <td className="border-b py-2 px-4 dark:border-gray-700">
+                <td className="border-b py-2 px-4 border-[#fff]">
                   <Field
                     type="text"
                     name="address"
-                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-[#161617] text-gray-700 dark:text-gray-200"
+                    className="text-lg leading-6 h-10 w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 bg-white dark:bg-dark-primary text-gray-700 dark:text-gray-200"
                   />
                   <ErrorMessage
                     name="address"
                     component="div"
-                    className="text-red-500 dark:text-red-400"
+                    className="text-[#c43939]"
                   />
                 </td>
               </tr>

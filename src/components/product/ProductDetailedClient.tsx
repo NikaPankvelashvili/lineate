@@ -7,6 +7,8 @@ import { useContext, useState, useEffect } from "react";
 import { CartContextType, CartProductType } from "@/src/types/cartTypes";
 import _ from "lodash";
 import { handleAddToCart, handleColorChange } from "./utils/productDetailed";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDetailedClient = ({ product }: { product: Product }) => {
   const [selectedColor, setSelectedColor] = useState<string>(
@@ -26,13 +28,16 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
   // }, [cartContext]);
 
   return (
-    <main className="flex px-[7%] py-12 gap-12 bg-[#161617] min-h-screen justify-between">
+    <main className="flex px-[7%] py-12 gap-12 dark:bg-dark-primary bg-light-primary min-h-screen justify-between">
       <div className="flex w-1/2">
         <div className="flex flex-col gap-4">
           {product.photos
             .filter((photo) => photo.color === selectedColor)
             .map((photo) => (
-              <div key={photo.id} className="bg-[#2b2b2c] rounded">
+              <div
+                key={photo.id}
+                className="dark:bg-dark-secondary bg-light-secondary rounded"
+              >
                 <Image
                   className="cursor-pointer"
                   src={photo.url}
@@ -83,7 +88,7 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
         <div className="flex items-center gap-2 mb-4">
           {product.memories.map((memory, index) => (
             <button
-              className={`text-white p-5 bg-[#2b2b2c] rounded ${
+              className={`text-white p-5 dark:bg-dark-secondary bg-light-secondary rounded ${
                 selectedMemory === index ? "border-2 border-black" : ""
               }`}
               value={index}
@@ -101,7 +106,7 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
             <button
               onClick={(e) => setSelectedRam(parseInt(e.currentTarget.value))}
               value={index}
-              className={`text-white p-5 bg-[#2b2b2c] rounded ${
+              className={`text-white p-5 dark:bg-dark-secondary bg-light-secondary rounded ${
                 selectedRam === index ? "border-2 border-black" : ""
               }`}
               key={index}
@@ -131,6 +136,18 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
           Add to Cart
         </button>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2500}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        limit={5}
+      />
     </main>
   );
 };

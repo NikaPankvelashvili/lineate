@@ -8,7 +8,7 @@ export interface BlogType {
   user_id: number;
   title: TranslatedText;
   description: TranslatedText;
-  createdAt: string; // Assuming ISO 8601 string format
+  createdat: string; // Assuming ISO 8601 string format
   image_url: string;
   approved: boolean;
   type: string;

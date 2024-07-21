@@ -243,7 +243,7 @@ export default function EditBlog({ blogData }: { blogData: BlogType }) {
     title: blogData.title,
     description: blogData.description,
     image_url: blogData.image_url,
-    createdAt: blogData.createdAt,
+    createdat: blogData.createdat,
     user_id: blogData.user_id,
     approved: blogData.approved,
     type: blogData.type,
@@ -320,7 +320,7 @@ export default function EditBlog({ blogData }: { blogData: BlogType }) {
         aria-describedby="modal-modal-description"
         className="flex items-center justify-center"
       >
-        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-2xl max-h-full overflow-y-auto">
+        <div className="bg-[#fff] shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-2xl max-h-full overflow-y-auto dark:text-white dark:bg-dark-secondary">
           <Formik
             initialValues={initialValues}
             validationSchema={blogValidation}
@@ -336,7 +336,7 @@ export default function EditBlog({ blogData }: { blogData: BlogType }) {
                     {t("titleEn")}
                   </label>
                   <Field
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border dark:text-white rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
                     id="title_en"
                     name="title.en"
                     type="text"
@@ -356,7 +356,7 @@ export default function EditBlog({ blogData }: { blogData: BlogType }) {
                     {t("titleKa")}
                   </label>
                   <Field
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border dark:text-white rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
                     id="title_ka"
                     name="title.ka"
                     type="text"
@@ -376,7 +376,7 @@ export default function EditBlog({ blogData }: { blogData: BlogType }) {
                     {t("descriptionEn")}
                   </label>
                   <Field
-                    className="shadow appearance-none border min-h-24 rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border dark:text-white min-h-24 rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
                     id="description_en"
                     name="description.en"
                     as="textarea"
@@ -396,7 +396,7 @@ export default function EditBlog({ blogData }: { blogData: BlogType }) {
                     {t("descriptionKa")}
                   </label>
                   <Field
-                    className="shadow appearance-none border min-h-24 rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border dark:text-white min-h-24 rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
                     id="description_ka"
                     name="description.ka"
                     as="textarea"
@@ -413,7 +413,7 @@ export default function EditBlog({ blogData }: { blogData: BlogType }) {
                     {t("image")}
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none dark:text-white border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
                     type="file"
                     ref={inputFileRef}
                     onChange={(event) => handleFileUpload(event, setFieldValue)}
@@ -428,7 +428,7 @@ export default function EditBlog({ blogData }: { blogData: BlogType }) {
                 </div>
                 {initialValues.image_url && (
                   <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                    <label className="block text-gray-700 text-sm font-bold mb-2 ">
                       {t("currentImage")}
                     </label>
                     <Image
@@ -456,7 +456,7 @@ export default function EditBlog({ blogData }: { blogData: BlogType }) {
                 )}
                 <div className="flex items-center justify-between">
                   <button
-                    className="bg-[#11545c] hover:bg-[#11545c] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-[#0071e3] hover:bg-[#0056b3] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
                     disabled={isSubmitting || loading}
                   >

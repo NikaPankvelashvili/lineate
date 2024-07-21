@@ -143,7 +143,7 @@
 //   return (
 //     <>
 //       <button
-//         className="bg-[#11545c] hover:bg-[#11545c] text-white font-bold py-2 px-4 rounded"
+//         className="bg-[#11545c] hover:bg-[#11545c] text-[#fff] font-bold py-2 px-4 rounded"
 //         onClick={handleOpen}
 //       >
 //         {t("addNewProduct")}
@@ -156,7 +156,7 @@
 //         aria-describedby="modal-modal-description"
 //         className="flex items-center justify-center"
 //       >
-//         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-h-full overflow-y-auto w-full max-w-2xl">
+//         <div className="bg-[#fff] shadow-md rounded px-8 pt-6 pb-8 mb-4 max-h-full overflow-y-auto w-full max-w-2xl">
 //           <Formik
 //             initialValues={initialValues}
 //             validationSchema={validationSchema}
@@ -172,7 +172,7 @@
 //                     {t("title")}
 //                   </label>
 //                   <Field
-//                     className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+//                     className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black leading-tight focus:outline-none focus:shadow-outline"
 //                     id="title"
 //                     name="title"
 //                     type="text"
@@ -181,7 +181,7 @@
 //                   <ErrorMessage
 //                     name="title"
 //                     component="div"
-//                     className="text-red-500 text-xs italic"
+//                     className="text-[#ff0000] text-xs italic"
 //                   />
 //                 </div>
 //                 <div className="mb-4">
@@ -198,7 +198,7 @@
 //                   <ErrorMessage
 //                     name="description"
 //                     component="div"
-//                     className="text-red-500 text-xs italic"
+//                     className="text-[#ff0000] text-xs italic"
 //                   />
 //                 </div>
 //                 <div className="mb-4">
@@ -216,7 +216,7 @@
 //                   <ErrorMessage
 //                     name="image_url"
 //                     component="div"
-//                     className="text-red-500 text-xs italic"
+//                     className="text-[#ff0000] text-xs italic"
 //                   />
 //                 </div>
 //                 <div className="mb-4">
@@ -243,7 +243,7 @@
 //                       </button>
 //                       <button
 //                         type="button"
-//                         className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+//                         className="bg-[#ff0000] hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
 //                         onClick={() =>
 //                           handleDeleteImage(image.id, setFieldValue)
 //                         }
@@ -267,7 +267,7 @@
 //                   <ErrorMessage
 //                     name="price"
 //                     component="div"
-//                     className="text-red-500 text-xs italic"
+//                     className="text-[#ff0000] text-xs italic"
 //                   />
 //                 </div>
 //                 <div className="mb-4">
@@ -284,7 +284,7 @@
 //                   <ErrorMessage
 //                     name="category"
 //                     component="div"
-//                     className="text-red-500 text-xs italic"
+//                     className="text-[#ff0000] text-xs italic"
 //                   />
 //                 </div>
 
@@ -302,7 +302,7 @@
 //                   <ErrorMessage
 //                     name="stock"
 //                     component="div"
-//                     className="text-red-500 text-xs italic"
+//                     className="text-[#ff0000] text-xs italic"
 //                   />
 //                 </div>
 //                 <div className="flex items-center justify-between">
@@ -483,7 +483,7 @@ export default function AddNewProduct() {
   return (
     <>
       <button
-        className="bg-[#11545c] hover:bg-[#11545c] text-white font-bold py-2 px-4 rounded"
+        className="bg-[#0071e3] hover:bg-[#0056b3] mb-4 text-white font-bold py-2 px-4 rounded"
         onClick={handleOpen}
       >
         {t("addNewProduct")}
@@ -496,7 +496,7 @@ export default function AddNewProduct() {
         aria-describedby="modal-modal-description"
         className="flex items-center justify-center"
       >
-        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-h-full overflow-y-auto w-full max-w-2xl">
+        <div className="bg-[#fff] dark:bg-dark-secondary shadow-md rounded px-8 pt-6 pb-8 mb-4 max-h-full overflow-y-auto w-full max-w-2xl">
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -513,7 +513,7 @@ export default function AddNewProduct() {
                     {t("title")}
                   </label>
                   <Field
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black leading-tight focus:outline-none focus:shadow-outline"
                     id="title"
                     name="title"
                     type="text"
@@ -522,7 +522,7 @@ export default function AddNewProduct() {
                   <ErrorMessage
                     name="title"
                     component="div"
-                    className="text-red-500 text-xs italic"
+                    className="text-[#ff0000] text-xs italic"
                   />
                 </div>
                 <div className="mb-4">
@@ -530,7 +530,7 @@ export default function AddNewProduct() {
                     {t("description")}
                   </label>
                   <Field
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black  leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black  leading-tight focus:outline-none focus:shadow-outline"
                     id="description"
                     name="description"
                     as="textarea"
@@ -539,7 +539,7 @@ export default function AddNewProduct() {
                   <ErrorMessage
                     name="description"
                     component="div"
-                    className="text-red-500 text-xs italic"
+                    className="text-[#ff0000] text-xs italic"
                   />
                 </div>
                 <div className="mb-4">
@@ -547,7 +547,7 @@ export default function AddNewProduct() {
                     {t("image")}
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black  leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black  leading-tight focus:outline-none focus:shadow-outline"
                     type="file"
                     ref={inputFileRef}
                     onChange={(e) => handleFileChange(e, setFieldValue)}
@@ -557,7 +557,7 @@ export default function AddNewProduct() {
                   <ErrorMessage
                     name="photos"
                     component="div"
-                    className="text-red-500 text-xs italic"
+                    className="text-[#ff0000] text-xs italic"
                   />
                 </div>
                 <div className="mb-4">
@@ -578,14 +578,14 @@ export default function AddNewProduct() {
                           (img) => img.id === image.id
                         )}].color`}
                         placeholder={t("color")}
-                        className="shadow appearance-none border rounded py-1 px-2 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded py-1 px-2 bg-[#fff] text-black leading-tight focus:outline-none focus:shadow-outline"
                       /> */}
                       <Field
                         name={`photos[${imageGallery.findIndex(
                           (img) => img.id === image.id
                         )}].color`}
                         placeholder={t("color")}
-                        className="shadow appearance-none border rounded py-1 px-2 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded py-1 px-2 bg-[#fff] text-black leading-tight focus:outline-none focus:shadow-outline"
                         onChange={(e: any) =>
                           handleColorChange(
                             image.id,
@@ -606,7 +606,7 @@ export default function AddNewProduct() {
                       </button>
                       <button
                         type="button"
-                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                        className="bg-[#ff0000] hover:bg-red-700 text-[#fff] font-bold py-1 px-2 rounded"
                         onClick={() =>
                           handleDeleteImage(image.id, setFieldValue)
                         }
@@ -621,7 +621,7 @@ export default function AddNewProduct() {
                     {t("price")}
                   </label>
                   <Field
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black  leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black  leading-tight focus:outline-none focus:shadow-outline"
                     id="price"
                     name="price"
                     type="number"
@@ -630,7 +630,7 @@ export default function AddNewProduct() {
                   <ErrorMessage
                     name="price"
                     component="div"
-                    className="text-red-500 text-xs italic"
+                    className="text-[#ff0000] text-xs italic"
                   />
                 </div>
                 <div className="mb-4">
@@ -638,7 +638,7 @@ export default function AddNewProduct() {
                     {t("category")}
                   </label>
                   <Field
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black  leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black  leading-tight focus:outline-none focus:shadow-outline"
                     id="type"
                     name="type"
                     as="select"
@@ -652,7 +652,7 @@ export default function AddNewProduct() {
                   <ErrorMessage
                     name="type"
                     component="div"
-                    className="text-red-500 text-xs italic"
+                    className="text-[#ff0000] text-xs italic"
                   />
                 </div>
                 <div className="mb-4">
@@ -660,7 +660,7 @@ export default function AddNewProduct() {
                     {t("stock")}
                   </label>
                   <Field
-                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black  leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black  leading-tight focus:outline-none focus:shadow-outline"
                     id="stock"
                     name="stock"
                     type="number"
@@ -669,7 +669,7 @@ export default function AddNewProduct() {
                   <ErrorMessage
                     name="stock"
                     component="div"
-                    className="text-red-500 text-xs italic"
+                    className="text-[#ff0000] text-xs italic"
                   />
                 </div>
                 <div className="mb-4">
@@ -685,17 +685,17 @@ export default function AddNewProduct() {
                             <Field
                               name={`colors[${index}].colorName`}
                               placeholder={t("colorName")}
-                              className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                              className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black leading-tight focus:outline-none focus:shadow-outline"
                             />
                             <Field
                               name={`colors[${index}].colorCode`}
                               placeholder={t("colorCode")}
-                              className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline ml-2"
+                              className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black leading-tight focus:outline-none focus:shadow-outline ml-2"
                             />
                             <button
                               type="button"
                               onClick={() => arrayHelpers.remove(index)}
-                              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded ml-2"
+                              className="bg-[#ff0000] hover:bg-red-700 text-[#fff] font-bold py-1 px-2 rounded ml-2"
                             >
                               {t("remove")}
                             </button>
@@ -706,7 +706,7 @@ export default function AddNewProduct() {
                           onClick={() =>
                             arrayHelpers.push({ colorName: "", colorCode: "" })
                           }
-                          className="bg-[#11545c] hover:bg-[#11545c] text-white font-bold py-2 px-4 rounded mt-2"
+                          className="bg-[#0071e3] hover:bg-[#0056b3] text-[#fff] font-bold py-2 px-4 rounded mt-2"
                         >
                           {t("addColor")}
                         </button>
@@ -716,7 +716,7 @@ export default function AddNewProduct() {
                   <ErrorMessage
                     name="colors"
                     component="div"
-                    className="text-red-500 text-xs italic"
+                    className="text-[#ff0000] text-xs italic"
                   />
                 </div>
                 <div className="mb-4">
@@ -732,13 +732,13 @@ export default function AddNewProduct() {
                             <Field
                               name={`memories[${index}]`}
                               placeholder={t("memory")}
-                              className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                              className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black leading-tight focus:outline-none focus:shadow-outline"
                               type="number"
                             />
                             <button
                               type="button"
                               onClick={() => arrayHelpers.remove(index)}
-                              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded ml-2"
+                              className="bg-[#ff0000] hover:bg-red-700 text-[#fff] font-bold py-1 px-2 rounded ml-2"
                             >
                               {t("remove")}
                             </button>
@@ -747,7 +747,7 @@ export default function AddNewProduct() {
                         <button
                           type="button"
                           onClick={() => arrayHelpers.push(0)}
-                          className="bg-[#11545c] hover:bg-[#11545c] text-white font-bold py-2 px-4 rounded mt-2"
+                          className="bg-[#0071e3] hover:bg-[#0056b3] text-[#fff] font-bold py-2 px-4 rounded mt-2"
                         >
                           {t("addMemory")}
                         </button>
@@ -757,7 +757,7 @@ export default function AddNewProduct() {
                   <ErrorMessage
                     name="memories"
                     component="div"
-                    className="text-red-500 text-xs italic"
+                    className="text-[#ff0000] text-xs italic"
                   />
                 </div>
                 <div className="mb-4">
@@ -773,13 +773,13 @@ export default function AddNewProduct() {
                             <Field
                               name={`ram[${index}]`}
                               placeholder={t("ram")}
-                              className="shadow appearance-none border rounded w-full py-2 px-3 bg-white text-black leading-tight focus:outline-none focus:shadow-outline"
+                              className="shadow appearance-none border rounded w-full py-2 px-3 bg-[#fff] text-black leading-tight focus:outline-none focus:shadow-outline"
                               type="number"
                             />
                             <button
                               type="button"
                               onClick={() => arrayHelpers.remove(index)}
-                              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded ml-2"
+                              className="bg-[#ff0000] hover:bg-red-700 text-[#fff] font-bold py-1 px-2 rounded ml-2"
                             >
                               {t("remove")}
                             </button>
@@ -788,7 +788,7 @@ export default function AddNewProduct() {
                         <button
                           type="button"
                           onClick={() => arrayHelpers.push(0)}
-                          className="bg-[#11545c] hover:bg-[#11545c] text-white font-bold py-2 px-4 rounded mt-2"
+                          className="bg-[#0071e3] hover:bg-[#0056b3] text-[#fff] font-bold py-2 px-4 rounded mt-2"
                         >
                           {t("addRam")}
                         </button>
@@ -798,12 +798,12 @@ export default function AddNewProduct() {
                   <ErrorMessage
                     name="ram"
                     component="div"
-                    className="text-red-500 text-xs italic"
+                    className="text-[#ff0000] text-xs italic"
                   />
                 </div>
                 <div className="flex items-center justify-between">
                   <button
-                    className="bg-[#11545c] hover:bg-[#11545c] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-[#0071e3] hover:bg-[#0056b3] text-[#fff] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
                     disabled={loading || isSubmitting}
                   >

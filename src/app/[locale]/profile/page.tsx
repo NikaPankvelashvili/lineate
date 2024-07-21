@@ -13,10 +13,10 @@ const ProfilePage = async () => {
     // <main>
     //   <ProfileClient user={user} />
     // </main>
-    <main className="bg-[#adb5bd] dark:bg-[#161617] px-[8%] flex flex-col items-center h-screen">
+    <main className="bg-light-primary dark:bg-dark-primary px-[8%] flex flex-col items-center min-h-screen">
       <p className="text-5xl text-white mt-24 mb-12">{t("editProfile")}</p>
       <div className="flex flex-col items-center justify-center">
-        <div className="px-[4%] pb-10 flex flex-row justify-center items-center  gap-20 md:gap-12">
+        <div className="px-[4%] pb-10 flex flex-row justify-center items-center  gap-20 max-md:gap-12 max-sm:flex-col">
           <div className="flex flex-col gap-3 justify-center items-center">
             <UploadPage userImage={user?.image_url} />
           </div>

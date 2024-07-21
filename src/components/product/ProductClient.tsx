@@ -15,6 +15,7 @@ import RamFilter from "./filter/RamFilter";
 import MemoryFilter from "./filter/MemoryFilter";
 import PriceFilter from "./filter/PriceFilter";
 import { useI18n } from "@/src/locales/client";
+import ProductSkeleton from "../loading/ProductSkeleton";
 
 const ProductClient = ({ products }: { products: Product[] }) => {
   const [isClient, setIsClient] = useState<boolean>(false);
@@ -57,8 +58,8 @@ const ProductClient = ({ products }: { products: Product[] }) => {
 
   return (
     <main className="flex min-h-screen">
-      <section className="w-1/5 bg-[#161617] p-6 ">
-        <div className="bg-[#2b2b2c] h-auto flex flex-col gap-5 p-4 rounded-lg">
+      <section className="w-1/5 dark:bg-dark-primary bg-light-primary p-6 ">
+        <div className="dark:bg-dark-secondary bg-light-secondary h-auto flex flex-col gap-5 p-4 rounded-lg">
           <TypeFilter
             selectedType={selectedType}
             setSelectedType={setSelectedType}
@@ -99,11 +100,11 @@ const ProductClient = ({ products }: { products: Product[] }) => {
           </button>
         </div>
       </section>
-      <section className="w-4/5">
-        <div className="bg-[#161617] p-8 flex items-center justify-between">
+      <section className="w-4/5 dark:bg-dark-primary bg-light-primary">
+        <div className="dark:bg-dark-primary bg-light-primary p-8 flex items-center justify-between">
           <input
             type="text"
-            className=" border-b-2  bg-[#161617] w-1/3 text-white text-lg focus:outline-none border-white"
+            className=" border-b-2  dark:bg-dark-primary bg-light-primary w-1/3 text-white text-lg focus:outline-none border-white"
             placeholder={`${t("search")}...`}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -111,7 +112,7 @@ const ProductClient = ({ products }: { products: Product[] }) => {
           <label className="text-white">
             {t("priceBy") + ":"}
             <select
-              className="bg-[#161617] text-white p-2 ml-2 outline-none"
+              className="dark:bg-dark-primary bg-light-primary text-white p-2 ml-2 outline-none"
               value={priceSort || "default"}
               onChange={(e) => {
                 e.target.value === "default"
@@ -125,8 +126,15 @@ const ProductClient = ({ products }: { products: Product[] }) => {
             </select>
           </label>
         </div>
-        <div className="grid grid-cols-3 gap-4 pb-20 pt-5 bg-[#161617] pl-6">
-          {isClient &&
+        <div className="grid grid-cols-3 gap-4 pb-20 pt-5 dark:bg-dark-primary bg-light-primary pl-6 max-xl:grid-cols-2 max-md:grid">
+          {!products ? (
+            <>
+              <ProductSkeleton index={1} />
+              <ProductSkeleton index={2} />
+              <ProductSkeleton index={3} />
+            </>
+          ) : (
+            // isClient &&
             products
               .filter((product) => {
                 return (
@@ -195,7 +203,8 @@ const ProductClient = ({ products }: { products: Product[] }) => {
                     type={product.type}
                   />
                 );
-              })}
+              })
+          )}
         </div>
       </section>
     </main>

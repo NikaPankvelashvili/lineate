@@ -1,16 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Autocomplete, TextField } from "@mui/material";
-import image1 from "/public/assets/logo.png";
+import image1 from "/public/assets/techblog.png";
 import Image from "next/image";
 import { BlogType } from "@/src/types/blogTypes";
 import { useCurrentLocale, useI18n } from "@/src/locales/client";
 import BlogCard from "./BlogCard";
+import { useTheme } from "next-themes";
 
 export default function BlogClient({ blogsData }: { blogsData: BlogType[] }) {
   const [search, setSearch] = useState("");
   const [visibleBlogs, setVisibleBlogs] = useState(4);
   const locale = useCurrentLocale();
+  const [isClient, setIsClient] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const showMoreBlogs = () => {
     setVisibleBlogs((prevVisibleBlogs) => prevVisibleBlogs + 4);
@@ -31,70 +38,72 @@ export default function BlogClient({ blogsData }: { blogsData: BlogType[] }) {
           objectFit="cover"
         />
       </div>
-      <div className="pt-20 flex justify-center items-center">
-        <Autocomplete
-          disablePortal
-          id="combo-box-demo"
-          options={blogsData}
-          getOptionLabel={(option) => option.title[locale]}
-          onChange={(_event, value) => {
-            setSearch(value ? value.title[locale] : "");
-          }}
-          sx={{
-            width: 300,
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: "inherit",
+      {isClient && (
+        <div className="pt-20 px-[8%] flex justify-start items-center">
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={blogsData}
+            getOptionLabel={(option) => option.title[locale]}
+            onChange={(_event, value) => {
+              setSearch(value ? value.title[locale] : "");
+            }}
+            sx={{
+              width: 300,
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "white",
+                },
+                "&:hover fieldset": {
+                  borderColor: "white",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "white",
+                },
               },
-              "&:hover fieldset": {
-                borderColor: "inherit",
+              "& .MuiInputBase-input": {
+                color: "white",
               },
-              "&.Mui-focused fieldset": {
-                borderColor: "inherit",
+              "& .MuiInputBase-input::placeholder": {
+                color: "white",
+                opacity: 1,
               },
-            },
-            "& .MuiInputBase-input": {
-              color: "inherit",
-            },
-            "& .MuiInputBase-input::placeholder": {
-              color: "inherit",
-              opacity: 1,
-            },
-            "& .MuiFormLabel-root": {
-              color: "black",
-            },
-            "&.Mui-focused .MuiFormLabel-root": {
-              color: "black",
-            },
-            "& .dark .MuiFormLabel-root": {
-              color: "white",
-            },
-            "& .dark.Mui-focused .MuiFormLabel-root": {
-              color: "white",
-            },
-          }}
-          renderInput={(params) => (
-            <TextField
-              onChange={(e) => setSearch(e.target.value)}
-              className="bg-white dark:bg-gray-800 dark:text-white rounded-l-md"
-              {...params}
-              label={t("blog")}
-            />
-          )}
-        />
-      </div>
-      <div className="grid grid-cols-4 px-[4%] justify-between gap-4 pb-5 pt-5 md:grid-cols-1">
+              "& .MuiFormLabel-root": {
+                color: "white",
+              },
+              "&.Mui-focused .MuiFormLabel-root": {
+                color: "white",
+              },
+              "& .dark .MuiFormLabel-root": {
+                color: "white",
+              },
+              "& .dark.Mui-focused .MuiFormLabel-root": {
+                color: "white",
+              },
+            }}
+            renderInput={(params) => (
+              <TextField
+                onChange={(e) => setSearch(e.target.value)}
+                className="bg-white dark:bg-dark-secondary dark:text-white bg-light-secondary rounded-l-md"
+                {...params}
+                label={t("blog")}
+              />
+            )}
+          />
+        </div>
+      )}
+      <div className="grid grid-cols-4 px-[8%] justify-between gap-4 pb-10 pt-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
         {filteredBlogs?.slice(0, visibleBlogs).map((blog) => (
           <BlogCard key={blog.id} blogData={blog} />
         ))}
       </div>
       {visibleBlogs < filteredBlogs.length && (
-        <div className="flex justify-center py-5">
+        <div className="flex justify-center py-10">
           <button
             onClick={showMoreBlogs}
-            className="px-4 py-2 bg-[#11545c] hover:bg-[#11545c] text-white rounded-md "
+            className="px-4 py-2 bg-[#0071e3] hover:bg-[#0056b3] text-white rounded-md "
           >
-            {t("learnMore")}
+            {t("seeMore")}
           </button>
         </div>
       )}

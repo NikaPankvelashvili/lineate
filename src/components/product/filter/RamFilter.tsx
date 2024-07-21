@@ -31,7 +31,8 @@ const RamFilter = ({
                   "rounded",
                   "text-white",
                   "border-gray-400",
-                  "bg-[#161617]",
+                  "dark:bg-dark-primary",
+                  "bg-light-primary",
                   included_ram ? "opacity-100" : "opacity-60",
                 ])}
                 onClick={(e) => handleRamChange(e, setSelectedRam)}

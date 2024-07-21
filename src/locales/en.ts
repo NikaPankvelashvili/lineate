@@ -45,6 +45,9 @@ export default{
   'ascending': 'Ascending',
   'descending': 'Descending',
 
+  // Blog
+  'seeMore': 'See More',
+
 
   // Admin
   'orders': 'Orders',
@@ -68,10 +71,19 @@ export default{
   'category': 'Category',
   'stock': 'Stock',
   'addProduct': 'Add Product',
+  'loading': 'Loading',
+  'submit': 'Submit',
+  'adminPanel': 'Admin Panel',
+  'isAdmin': 'Admin',
+  'avatar': 'Avatar',
+  'nickname': 'Nickname',
+  'author': 'Author',
+  'approved': 'Approved',
+  'createdAt': 'Created At',
 
 
   // Formik
-  'Namerequired': 'Name is required',
+  'nameRequired': 'Name is required',
   'phoneIsRequired': 'Phone is required',
   'addressIsRequired': 'Address is required',
   'blogValidation': 'Blog Validation',
@@ -116,6 +128,19 @@ export default{
   'addMemory': 'Add Memory',
   'ram': 'Ram',
   'addRam': 'Add Ram',
+
+
+  // Orders
+  'totalPrice': 'Total Price',
+  'status': 'Status',
+  'Address': 'Address',
+  'receipt': 'Receipt',
+  'actions': 'Actions',
+  'viewReceipt': 'View Receipt',
+  'refunded': 'Refunded',
+  'paid': 'Paid',
+  'refund': 'Refund',
+
 
 
 } as const

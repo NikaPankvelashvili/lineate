@@ -45,6 +45,11 @@ export default{
   'ascending': 'ზრდადი',
   'descending': 'კლებადი',
 
+
+  // Blog
+  'seeMore': 'მეტის ნახვა',
+
+
   // Admin
   'orders': 'შეკვეთები',
   'users': 'მომხმარებლები',
@@ -67,10 +72,19 @@ export default{
   'category': 'კატეგორია',
   'stock': 'რაოდენობა',
   'addProduct': 'დაამატე პროდუქტი',
+  'loading': 'იტვირთება',
+  'submit': 'დადასტურება',
+  'adminPanel': 'ადმინის პანელი',
+  'isAdmin': 'ადმინი',
+  'avatar': 'ავატარი',
+  'nickname': 'ნიკი',
+  'author': 'ავტორი',
+  'approved': 'დადასტურებული',
+  'createdAt': 'თარიღი',
 
 
   // Formik
-  'Namerequired': 'სახელი აუცილებელია',
+  'nameRequired': 'სახელი აუცილებელია',
   'phoneIsRequired': 'ტელეფონი აუცილებელია',
   'addressIsRequired': 'მისამართი აუცილებელია',
   'blogValidation': 'ბლოგის ვალიდაცია',
@@ -114,6 +128,19 @@ export default{
   'addMemory': 'დაამატე მეხსიერება',
   'ram': 'Ram',
   'addRam': 'დაამატე Ram',
+
+
+
+  // Order
+  'totalPrice': 'ჯამი',
+  'status': 'სტატუსი',
+  'Address': 'მისამართი',
+  'receipt': 'მიღება',
+  'actions': 'ქმედები',
+  'viewReceipt': 'ინვოისი',
+  'refunded': 'დაბრუნებულია',
+  'paid': 'გადახდილია',
+  'refund': 'დაბრუნება',
 
 
 } as const
