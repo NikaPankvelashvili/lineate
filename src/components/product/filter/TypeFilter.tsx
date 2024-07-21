@@ -13,8 +13,8 @@ const TypeFilter = ({
 
   return (
     <fieldset className="flex flex-col text-white">
-      <legend>{t("typeFilter")}</legend>
-      <label htmlFor="all">
+      <legend className="mb-2">{t("typeFilter")}</legend>
+      <label htmlFor="all" className="mb-1">
         <input
           type="checkbox"
           id="all"
@@ -24,7 +24,7 @@ const TypeFilter = ({
         />
         <span className="ml-2">All</span>
       </label>
-      <label htmlFor="iphone">
+      <label htmlFor="iphone" className="mb-1">
         <input
           type="checkbox"
           id="iphone"
@@ -34,7 +34,7 @@ const TypeFilter = ({
         />
         <span className="ml-2">iPhone</span>
       </label>
-      <label htmlFor="macbook">
+      <label htmlFor="macbook" className="mb-1">
         <input
           type="checkbox"
           id="macbook"
@@ -44,7 +44,7 @@ const TypeFilter = ({
         />
         <span className="ml-2">MacBook</span>
       </label>
-      <label htmlFor="ipad">
+      <label htmlFor="ipad" className="mb-1">
         <input
           type="checkbox"
           id="ipad"

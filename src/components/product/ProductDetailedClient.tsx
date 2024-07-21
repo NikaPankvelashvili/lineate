@@ -9,6 +9,8 @@ import _ from "lodash";
 import { handleAddToCart, handleColorChange } from "./utils/productDetailed";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useI18n } from "@/src/locales/client";
+import { useTheme } from "next-themes";
 
 const ProductDetailedClient = ({ product }: { product: Product }) => {
   const [selectedColor, setSelectedColor] = useState<string>(
@@ -22,6 +24,10 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
   const [selectedRam, setSelectedRam] = useState<number>(-1);
 
   const cartContext = useContext<CartContextType>(CartContext);
+
+  const { theme, setTheme } = useTheme();
+
+  const t = useI18n();
 
   // useEffect(() => {
   //   console.log(cartContext.products);
@@ -115,26 +121,33 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
             </button>
           ))}
         </div>
-        <span className="text-white text-2xl">{`Total: ${product.price}$`}</span>
-        <button
-          className="text-white"
-          onClick={() =>
-            handleAddToCart({
-              product,
-              color: product.colors.find(
-                (color) => color.colorCode === selectedColor
-              ) || { colorCode: "", colorName: "" },
-              memory: product.memories[selectedMemory],
-              ram: product.ram[selectedRam],
-              cartContext,
-              image_url:
-                product.photos.find((photo) => photo.color === selectedColor)
-                  ?.url || "",
-            })
-          }
-        >
-          Add to Cart
-        </button>
+        <div className="my-14 flex flex-col gap-5 items-start">
+          <span className="text-white text-2xl font-bold">{`Total: ${product.price}$`}</span>
+          <button
+            className={`text-white px-4 py-2 hover:bg-[#0056b3] bg-[#0071e3] rounded-full ${
+              selectedMemory === -1 || selectedRam === -1
+                ? "cursor-not-allowed"
+                : ""
+            }`}
+            disabled={selectedMemory === -1 || selectedRam === -1}
+            onClick={() =>
+              handleAddToCart({
+                product,
+                color: product.colors.find(
+                  (color) => color.colorCode === selectedColor
+                ) || { colorCode: "", colorName: "" },
+                memory: product.memories[selectedMemory],
+                ram: product.ram[selectedRam],
+                cartContext,
+                image_url:
+                  product.photos.find((photo) => photo.color === selectedColor)
+                    ?.url || "",
+              })
+            }
+          >
+            {t("addToCart")}
+          </button>
+        </div>
       </div>
       <ToastContainer
         position="bottom-right"
@@ -145,7 +158,7 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme={theme}
         limit={5}
       />
     </main>

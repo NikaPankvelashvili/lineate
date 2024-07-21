@@ -24,6 +24,8 @@ export default{
   'price': 'Price',
   'learnMore': 'Learn More',
   'allProducts': 'All Products',
+  'filter': 'Filter',
+  'addToCart': 'Add To Cart',
 
   // Filters
   'typeFilter': 'Choose Type',

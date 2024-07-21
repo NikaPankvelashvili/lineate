@@ -17,7 +17,7 @@ const OrdersPage = async () => {
   );
 
   return (
-    <div className="container mx-auto px-[4%] py-24 min-h-screen bg-light-primary dark:bg-dark-primary">
+    <div className="w-full mx-auto px-[8%] py-24 min-h-screen bg-light-primary dark:bg-dark-primary">
       <OrdersClient />
       <h2 className="text-2xl font-semibold mb-4 text-white">Orders</h2>
       <div className="overflow-x-auto">

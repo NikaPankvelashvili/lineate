@@ -19,7 +19,7 @@ const AdminBlogsPage = async () => {
   // console.log(blogs[0]?.createdAt);
 
   return (
-    <main className="container mx-auto px-[8%] py-20 dark:bg-dark-primary bg-light-primary text-white">
+    <main className="w-full mx-auto px-[8%] py-20 dark:bg-dark-primary bg-light-primary text-white">
       <h2 className="text-5xl font-semibold mb-20 dark:text-white ">
         <div className="flex justify-center items-center gap-4">
           <Link href={`/admin`} className="cursor-pointer hover:opacity-70">
