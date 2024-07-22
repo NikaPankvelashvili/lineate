@@ -45,7 +45,7 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
 
   return (
     <main className="flex px-[7%] py-12 gap-12 dark:bg-dark-primary bg-light-primary min-h-screen justify-between max-lg:flex-col max-lg">
-      <div className="flex w-full max-lg:justify-center max-lg:items-center max-lg:flex-col-reverse">
+      <div className="flex w-full max-lg:justify-center max-lg:items-center max-lg:flex-col-reverse max-lg:gap-4">
         <div className="flex flex-col gap-4 max-lg:flex-row">
           {product.photos
             .filter((photo) => photo.color === selectedColor)
