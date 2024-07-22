@@ -135,7 +135,7 @@ export function handleAddToCart({
     const updatedProducts = [...cartContext.products];
     updatedProducts[existingProductIndex].quantity += quantity;
     if (updatedProducts[existingProductIndex].quantity === 0) {
-      toast.error("Product completely removed from cart");
+      toast.success("Product completely removed from cart");
       toastFlag = true;
       updatedProducts.splice(existingProductIndex, 1);
     }
@@ -147,6 +147,6 @@ export function handleAddToCart({
   if (!toastFlag && quantity > 0) {
     toast.success("Product added to cart");
   } else if (!toastFlag && quantity < 0) {
-    toast.warn("Product removed from cart");
+    toast.success("Product removed from cart");
   }
 }

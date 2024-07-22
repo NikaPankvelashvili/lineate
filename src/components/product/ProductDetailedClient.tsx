@@ -21,8 +21,8 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
     product.photos.find((photo) => photo.color === selectedColor) ||
       product.photos[0]
   );
-  const [selectedMemory, setSelectedMemory] = useState<number>(-1);
-  const [selectedRam, setSelectedRam] = useState<number>(-1);
+  const [selectedMemory, setSelectedMemory] = useState<number>(0);
+  const [selectedRam, setSelectedRam] = useState<number>(0);
 
   const cartContext = useContext<CartContextType>(CartContext);
 
@@ -35,13 +35,29 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
   // }, [cartContext]);
 
   const calculateTotalPrice = (product: Product) => {
-    if (selectedMemory === -1 && selectedRam === -1) return product.price;
+    if (selectedMemory === -1 && selectedRam === -1)
+      return Number(product.price);
     if (selectedMemory === -1) return Number(product.price) + selectedRam * 100;
     if (selectedRam === -1) return Number(product.price) + selectedMemory * 50;
     return Number(product.price) + selectedMemory * 50 + selectedRam * 100;
   };
 
-  console.log(cartContext.products);
+  function handleMemoryClick(e: React.MouseEvent<HTMLButtonElement>) {
+    // if (selectedMemory === parseInt(e.currentTarget.value)) {
+    //   setSelectedMemory(-1);
+    //   setSelectedRam(-1);
+    //   return;
+    // }
+    setSelectedMemory(parseInt(e.currentTarget.value));
+  }
+
+  function handleRamClick(e: React.MouseEvent<HTMLButtonElement>) {
+    // if (selectedRam === parseInt(e.currentTarget.value)) {
+    //   setSelectedRam(-1);
+    //   return;
+    // }
+    setSelectedRam(parseInt(e.currentTarget.value));
+  }
 
   return (
     <main className="flex px-[7%] py-12 gap-12 dark:bg-dark-primary bg-light-primary min-h-screen justify-between max-lg:flex-col max-lg">
@@ -118,9 +134,7 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
                 }`}
                 value={index}
                 key={index}
-                onClick={(e) =>
-                  setSelectedMemory(parseInt(e.currentTarget.value))
-                }
+                onClick={(e) => handleMemoryClick(e)}
               >
                 {mapMemoryToString(memory)}
               </button>
@@ -132,11 +146,14 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
           <div className="flex items-center gap-2 flex-wrap max-lg:justify-center max-sm:flex-col">
             {product.ram?.map((ram, index) => (
               <button
-                onClick={(e) => setSelectedRam(parseInt(e.currentTarget.value))}
+                onClick={(e) => {
+                  handleRamClick(e);
+                }}
                 value={index}
+                disabled={selectedMemory === -1}
                 className={`text-white p-5 min-w-28 max-sm:min-w-48 dark:bg-dark-secondary bg-light-secondary rounded ${
                   selectedRam === index ? "border-2 border-black" : ""
-                }`}
+                } ${selectedMemory === -1 ? "cursor-not-allowed" : ""}`}
                 key={index}
               >
                 {ram}GB
@@ -147,7 +164,7 @@ const ProductDetailedClient = ({ product }: { product: Product }) => {
         <div className="my-8 flex flex-col gap-5 items-start max-lg:items-center">
           <span className="text-white text-2xl font-bold">{`Total: ${calculateTotalPrice(
             product
-          )}$`}</span>
+          ).toFixed(2)}$`}</span>
           <button
             className={`text-white px-4 py-2 hover:bg-[#0056b3] bg-[#0071e3] rounded-full ${
               selectedMemory === -1 || selectedRam === -1
